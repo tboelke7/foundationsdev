@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/BaseLayout.astro';
+import { services } from '../../siteConfig.js';
+export function getStaticPaths() {
+  return services.map(s => ({ params: { slug: s.slug }, props: { service: s } }));
+}
+const { service } = Astro.props;
+---
+<Base title={service.title} description={service.blurb} path={`/services/${service.slug}/`}>
+  <section style="background:var(--navy);color:var(--cream)">
+    <div class="wrap">
+      <p class="label">Service</p>
+      <h1 style="margin-top:12px;max-width:18ch">{service.title}</h1>
+      <p style="margin-top:18px;max-width:50ch;font-size:1.15rem;opacity:.9">{service.blurb}</p>
+    </div>
+  </section>
+  <section>
+    <div class="wrap" style="max-width:680px">
+      <p style="font-size:1.1rem">{service.body}</p>
+      <div style="margin-top:36px">
+        <a class="btn" href="/contact/">Get your free Report Card</a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { site, services, steps } from '../siteConfig.js';
+const compare = [
+  { point:"You own the site, domain & code", us:true, them:false },
+  { point:"No markup on your ad spend", us:true, them:false },
+  { point:"No monthly platform hostage fees", us:true, them:false },
+  { point:"Built to load in under a second", us:true, them:false },
+  { point:"Free Web Presence Report Card", us:true, them:false },
+];
+---
+<Base path="/">
+  <!-- HERO -->
+  <section style="background:var(--navy);color:var(--cream);padding-bottom:48px">
+    <div class="wrap hero">
+      <div class="hero-copy">
+        <p class="label">Web presence for Tampa Bay trades</p>
+        <h1 style="margin-top:14px">Build like an A.<br/>Show up online like one.</h1>
+        <p style="margin-top:20px;max-width:46ch;font-size:1.12rem;opacity:.9">
+          You do great work. But if your website is slow, thin, or stuck on a platform you don't own,
+          homeowners never see it. We build the web presence your reputation already earned — and you
+          own every piece of it.
+        </p>
+        <div style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap">
+          <a class="btn" href="/contact/">Get your free Report Card</a>
+          <a class="btn btn-ghost" style="border-color:var(--gold);color:var(--gold)" href="/pricing/">See pricing</a>
+        </div>
+        <p style="margin-top:26px;opacity:.7;font-size:.95rem">Trusted by Tampa Bay trades & home-service contractors.</p>
+      </div>
+      <div class="hero-img">
+        <img src="/images/hero.webp" width="853" height="476" alt="A fast, modern contractor website shown on a laptop and phone, built by Foundations" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <section style="background:var(--brass);color:#fff;padding:36px 0">
+    <div class="wrap statband">
+      <div><span class="statnum">8</span><span class="statlbl">dimensions we grade</span></div>
+      <div><span class="statnum">100%</span><span class="statlbl">you own, always</span></div>
+      <div><span class="statnum">0%</span><span class="statlbl">markup on ad spend</span></div>
+      <div><span class="statnum">&lt;1s</span><span class="statlbl">page load target</span></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section>
+    <div class="wrap">
+      <p class="label">What we do</p>
+      <h2 style="margin-top:10px">Everything to get found, and chosen.</h2>
+      <div class="grid g3" style="margin-top:36px">
+        {services.map(s => (
+          <a class="card svc" href={`/services/${s.slug}/`}>
+            <span class="ico"><Icon name={s.icon} /></span>
+            <h3 style="font-size:1.12rem;margin-top:14px">{s.title}{s.addon && <span class="pill">Add-on</span>}</h3>
+            <p style="margin-top:10px;color:var(--muted)">{s.blurb}</p>
+            <p style="margin-top:14px" class="label">Learn more →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <p class="label">How it works</p>
+      <h2 style="margin-top:10px">Three steps to a foundation that compounds.</h2>
+      <div class="grid g3" style="margin-top:40px">
+        {steps.map(st => (
+          <div>
+            <span class="stepn">{st.n}</span>
+            <h3 style="font-size:1.2rem;margin-top:12px">{st.title}</h3>
+            <p style="margin-top:10px;color:var(--muted)">{st.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section>
+    <div class="wrap" style="max-width:760px">
+      <p class="label" style="text-align:center">The difference</p>
+      <h2 style="margin-top:10px;text-align:center;max-width:22ch;margin-inline:auto">Most agencies rent you a presence. We hand you one.</h2>
+      <div class="comp" style="margin-top:36px">
+        <div class="comp-head">
+          <span></span>
+          <span class="comp-us">Foundations</span>
+          <span class="comp-them">Most agencies</span>
+        </div>
+        {compare.map(c => (
+          <div class="comp-row">
+            <span>{c.point}</span>
+            <span class="comp-us">{c.us ? "✓" : "—"}</span>
+            <span class="comp-them">{c.them ? "✓" : "—"}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--navy);color:var(--cream);text-align:center">
+    <div class="wrap">
+      <h2 style="max-width:18ch;margin-inline:auto">See exactly where your web presence stands.</h2>
+      <p style="margin-top:16px;opacity:.9;max-width:46ch;margin-inline:auto">
+        We grade it A–F across 8 dimensions — free, no obligation. Most contractors are shocked.
+      </p>
+      <a class="btn" style="margin-top:28px" href="/contact/">Get your free Report Card</a>
+    </div>
+  </section>
+
+  <style>
+    .hero{display:grid;gap:40px;align-items:center;padding-top:24px}
+    @media(min-width:880px){.hero{grid-template-columns:1.05fr .95fr}}
+    .hero-img img{width:100%;height:auto;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+    .statband{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;text-align:center}
+    @media(min-width:760px){.statband{grid-template-columns:repeat(4,1fr)}}
+    .statnum{display:block;font-family:var(--display);font-weight:800;font-size:2.2rem;line-height:1}
+    .statlbl{display:block;margin-top:6px;font-size:.85rem;opacity:.92;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em}
+    .svc .ico{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:10px;background:var(--cream);color:var(--brass)}
+    .svc:hover .ico{background:var(--gold);color:var(--navy)}
+    .pill{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);border:1px solid var(--gold);border-radius:20px;padding:2px 8px;vertical-align:middle}
+    .stepn{font-family:var(--display);font-weight:800;font-size:2.4rem;color:var(--gold);-webkit-text-stroke:1px var(--brass)}
+    .comp{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+    .comp-head,.comp-row{display:grid;grid-template-columns:1fr 130px 130px;align-items:center}
+    .comp-head{background:var(--navy);color:var(--cream);padding:14px 20px;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
+    .comp-row{padding:16px 20px;border-top:1px solid var(--line)}
+    .comp-us{text-align:center;color:var(--brass);font-weight:800}
+    .comp-them{text-align:center;color:var(--muted)}
+    .comp-head .comp-us{color:var(--gold)} .comp-head .comp-them{color:var(--cream);opacity:.7}
+    @media(max-width:620px){.comp-head,.comp-row{grid-template-columns:1fr 64px 64px}}
+  </style>
+</Base>

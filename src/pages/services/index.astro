@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { services } from '../../siteConfig.js';
+---
+<Base title="Services" description="Web presence, Google Business Profile, lead generation, automation, reviews, and reputation management for Tampa Bay contractors." path="/services/">
+  <section>
+    <div class="wrap">
+      <p class="label">Services</p>
+      <h1 style="margin-top:12px">Everything to get found, and chosen.</h1>
+      <p style="margin-top:14px;max-width:54ch;color:var(--muted)">Core services build and grow your presence. Add-ons layer on when you're ready for more.</p>
+      <div class="grid g2" style="margin-top:40px">
+        {services.map(s => (
+          <a class="card svc" href={`/services/${s.slug}/`}>
+            <span class="ico"><Icon name={s.icon} /></span>
+            <h3 style="font-size:1.2rem;margin-top:14px">{s.title}{s.addon && <span class="pill">Add-on</span>}</h3>
+            <p style="margin-top:10px;color:var(--muted)">{s.blurb}</p>
+            <p style="margin-top:14px" class="label">Learn more →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <style>
+    .svc .ico{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:10px;background:var(--cream);color:var(--brass)}
+    .svc:hover .ico{background:var(--gold);color:var(--navy)}
+    .pill{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);border:1px solid var(--gold);border-radius:20px;padding:2px 8px;vertical-align:middle}
+  </style>
+</Base>

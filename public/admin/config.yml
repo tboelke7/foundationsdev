@@ -1,0 +1,21 @@
+# Decap CMS — log in at foundationsdev.com/admin to write blog posts.
+# Requires Netlify Identity + Git Gateway enabled in the Netlify dashboard.
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Meta description", name: "description", widget: "text" }
+      - { label: "Publish date", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Hero image", name: "hero", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }

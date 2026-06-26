@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('blog')).sort((a,b)=> b.data.pubDate - a.data.pubDate);
+---
+<Base title="Blog" description="Insights on web presence, local SEO, and getting found for Tampa Bay contractors." path="/blog/">
+  <section>
+    <div class="wrap" style="max-width:760px">
+      <p class="label">Blog</p>
+      <h1 style="margin-top:12px">Getting found, explained.</h1>
+      <div style="margin-top:36px;display:grid;gap:20px">
+        {posts.map(p => (
+          <a class="card" href={`/blog/${p.slug}/`}>
+            <p class="label">{p.data.pubDate.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</p>
+            <h3 style="font-size:1.2rem;margin-top:8px">{p.data.title}</h3>
+            <p style="margin-top:10px;color:var(--muted)">{p.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

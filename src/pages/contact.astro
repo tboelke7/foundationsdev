@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/BaseLayout.astro';
+import { site } from '../siteConfig.js';
+---
+<Base title="Contact" description="Get your free Web Presence Report Card. Graded A–F across 8 dimensions." path="/contact/">
+  <section>
+    <div class="wrap" style="max-width:680px">
+      <p class="label">Free Web Presence Report Card</p>
+      <h1 style="margin-top:12px">See exactly where you stand.</h1>
+      <p style="margin-top:16px;color:var(--muted)">
+        We grade your web presence A–F across 8 dimensions — site speed, Google Profile,
+        reviews, mobile, SEO, and more. Free, no obligation. Fill this out and we'll send it over.
+      </p>
+
+      <div class="card" style="margin-top:32px">
+        <!-- ============ PASTE HUBSPOT FORM EMBED HERE ============ -->
+        <!-- Portal 246368131. HubSpot → Marketing → Forms → create/select  -->
+        <!-- → Share → Embed → copy the <script> + target div, paste below. -->
+        <!-- Leads flow straight into your HubSpot pipeline.               -->
+        <p style="color:var(--muted);text-align:center;padding:40px 0">
+          [ HubSpot form embed goes here ]
+        </p>
+        <!-- ====================================================== -->
+      </div>
+
+      <p style="margin-top:28px;text-align:center;color:var(--muted)">
+        Prefer to talk? Call <a style="color:var(--brass);font-weight:700" href={`tel:${site.phoneRaw}`}>{site.phone}</a>
+        or email <a style="color:var(--brass);font-weight:700" href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://foundationsdev.com/sitemap-index.xml

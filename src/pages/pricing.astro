@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/BaseLayout.astro';
+import { buildTiers, monthlyPlans } from '../siteConfig.js';
+---
+<Base title="Pricing" description="Transparent pricing for web presence builds and monthly plans. You own everything." path="/pricing/">
+  <section>
+    <div class="wrap">
+      <p class="label">Pricing</p>
+      <h1 style="margin-top:12px">Straight pricing. No surprises.</h1>
+      <p style="margin-top:16px;max-width:50ch;color:var(--muted)">
+        One-time build to get you live, then a simple monthly plan to keep you growing.
+        Every plan includes full ownership of your site and assets.
+      </p>
+
+      <h2 style="margin-top:48px;font-size:1.5rem">One-time builds</h2>
+      <div class="grid g3" style="margin-top:24px">
+        {buildTiers.map(t => (
+          <div class="card">
+            <p class="label">{t.name}</p>
+            <p style="font-family:var(--display);font-size:2rem;font-weight:800;margin-top:8px">{t.price}</p>
+            <p style="margin-top:12px;color:var(--muted)">{t.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 style="margin-top:56px;font-size:1.5rem">Monthly plans</h2>
+      <div class="grid g3" style="margin-top:24px">
+        {monthlyPlans.map(p => (
+          <div class="card">
+            <p class="label">{p.name}</p>
+            <p style="font-family:var(--display);font-size:2rem;font-weight:800;margin-top:8px">{p.price}</p>
+            <p style="margin-top:12px;color:var(--muted)">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div style="margin-top:48px;text-align:center">
+        <a class="btn" href="/contact/">Get your free Report Card</a>
+      </div>
+    </div>
+  </section>
+</Base>

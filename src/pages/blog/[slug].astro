@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(p => ({ params: { slug: p.slug }, props: { post: p } }));
+}
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+<Base title={post.data.title} description={post.data.description} path={`/blog/${post.slug}/`}>
+  <section>
+    <article class="wrap" style="max-width:680px">
+      <p class="label">{post.data.pubDate.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</p>
+      <h1 style="margin-top:12px">{post.data.title}</h1>
+      <div style="margin-top:28px;font-size:1.08rem" class="prose">
+        <Content />
+      </div>
+      <div style="margin-top:40px;padding-top:28px;border-top:1px solid var(--line)">
+        <a class="btn" href="/contact/">Get your free Report Card</a>
+      </div>
+    </article>
+  </section>
+  <style is:global>
+    .prose p{margin-bottom:1rem} .prose h2{margin:1.8rem 0 .6rem;font-size:1.4rem}
+    .prose a{color:var(--brass);font-weight:700;text-decoration:underline}
+  </style>
+</Base>
