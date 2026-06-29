@@ -12,15 +12,27 @@ import { site } from '../siteConfig.js';
         reviews, mobile, SEO, and more. Free, no obligation. Fill this out and we'll send it over.
       </p>
 
-      <div class="card" style="margin-top:32px">
-        <!-- ============ PASTE HUBSPOT FORM EMBED HERE ============ -->
-        <!-- Portal 246368131. HubSpot → Marketing → Forms → create/select  -->
-        <!-- → Share → Embed → copy the <script> + target div, paste below. -->
-        <!-- Leads flow straight into your HubSpot pipeline.               -->
-        <p style="color:var(--muted);text-align:center;padding:40px 0">
-          [ HubSpot form embed goes here ]
-        </p>
-        <!-- ====================================================== -->
+      <div class="card hs-card" style="margin-top:32px">
+        <!-- HubSpot form — portal 246368131, form c03b7a6e-540a-47dc-81c8-4f33737411c5 -->
+        <div id="hubspot-report-card-form"></div>
+        <script charset="utf-8" type="text/javascript" src="//js-na2.hsforms.net/forms/embed/v2.js" is:inline></script>
+        <script is:inline>
+          (function () {
+            function loadForm() {
+              if (window.hbspt && window.hbspt.forms) {
+                window.hbspt.forms.create({
+                  portalId: "246368131",
+                  formId: "c03b7a6e-540a-47dc-81c8-4f33737411c5",
+                  region: "na2",
+                  target: "#hubspot-report-card-form"
+                });
+              } else {
+                setTimeout(loadForm, 200);
+              }
+            }
+            loadForm();
+          })();
+        </script>
       </div>
 
       <p style="margin-top:28px;text-align:center;color:var(--muted)">
@@ -29,4 +41,16 @@ import { site } from '../siteConfig.js';
       </p>
     </div>
   </section>
+
+  <style is:global>
+    .hs-card .hs-form-field{margin-bottom:16px}
+    .hs-card label{font-family:var(--body);font-weight:600;color:var(--navy);font-size:.9rem;display:block;margin-bottom:6px}
+    .hs-card input[type=text],.hs-card input[type=email],.hs-card input[type=tel],.hs-card textarea,.hs-card select{
+      width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:8px;font-family:var(--body);font-size:1rem;background:#fff}
+    .hs-card input:focus,.hs-card textarea:focus,.hs-card select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,168,85,.18)}
+    .hs-card .hs-button{background:var(--gold);color:var(--navy);font-weight:700;border:0;padding:13px 26px;border-radius:8px;font-family:var(--body);font-size:1rem;cursor:pointer;transition:.2s;width:100%}
+    .hs-card .hs-button:hover{background:var(--brass);color:#fff}
+    .hs-card .hs-error-msg,.hs-card .hs-error-msgs label{color:#c0392b;font-weight:500}
+    .hs-card .hs-form-required{color:var(--brass)}
+  </style>
 </Base>
