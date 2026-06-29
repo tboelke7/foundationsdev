@@ -1,42 +1,119 @@
 ---
 import Base from '../layouts/BaseLayout.astro';
-import { buildTiers, monthlyPlans } from '../siteConfig.js';
+import { buildTiers, monthlyPlans, rebrandOptions } from '../siteConfig.js';
 ---
-<Base title="Pricing" description="Transparent pricing for web presence builds and monthly plans. You own everything." path="/pricing/">
+<Base title="Pricing" description="Transparent pricing for web presence builds and monthly growth plans. You own everything — and pay less over time than agencies that rent you a presence." path="/pricing/">
+  <section style="background:var(--navy);color:var(--cream);padding-bottom:48px">
+    <div class="wrap" style="text-align:center">
+      <p class="label">Pricing</p>
+      <h1 style="margin-top:12px">Built to own. Priced to last.</h1>
+      <p style="margin-top:16px;max-width:60ch;margin-inline:auto;opacity:.9;font-size:1.1rem">
+        One upfront build to get you live and owned — then a simple monthly plan that keeps you growing.
+        No platform fees, no markup, no renting your own website back from us.
+      </p>
+    </div>
+  </section>
+
+  <!-- VALUE STATEMENT -->
+  <section style="background:var(--brass);color:#fff;padding:40px 0">
+    <div class="wrap" style="text-align:center;max-width:760px">
+      <h2 style="font-size:1.5rem">A better value than agencies that bill you forever.</h2>
+      <p style="margin-top:14px;opacity:.95;font-size:1.05rem">
+        Most agencies fold everything into a high monthly fee you pay every single month, for as long as
+        you stay. We split it: a one-time build you own outright, plus a lean monthly plan. Over a year —
+        and every year after — that adds up to far less than the all-in-monthly shops, and you walk away
+        owning every asset instead of renting it.
+      </p>
+    </div>
+  </section>
+
+  <!-- BUILDS -->
   <section>
     <div class="wrap">
-      <p class="label">Pricing</p>
-      <h1 style="margin-top:12px">Straight pricing. No surprises.</h1>
-      <p style="margin-top:16px;max-width:50ch;color:var(--muted)">
-        One-time build to get you live, then a simple monthly plan to keep you growing.
-        Every plan includes full ownership of your site and assets.
-      </p>
-
-      <h2 style="margin-top:48px;font-size:1.5rem">One-time builds</h2>
-      <div class="grid g3" style="margin-top:24px">
+      <p class="label">Step one — the build</p>
+      <h2 style="margin-top:10px">One-time builds. Yours forever.</h2>
+      <p style="margin-top:12px;max-width:58ch;color:var(--muted)">Pick the foundation that fits where you are. You own the site, the domain, and every asset the day it launches — no monthly platform fees, no strings.</p>
+      <div class="grid g3" style="margin-top:32px;align-items:start">
         {buildTiers.map(t => (
-          <div class="card">
+          <div class={"card price-card" + (t.featured ? " feat" : "")}>
+            {t.featured && <span class="ribbon">Most chosen</span>}
             <p class="label">{t.name}</p>
-            <p style="font-family:var(--display);font-size:2rem;font-weight:800;margin-top:8px">{t.price}</p>
-            <p style="margin-top:12px;color:var(--muted)">{t.desc}</p>
+            <p class="bigprice">{t.price}<span class="once"> once</span></p>
+            <p style="margin-top:10px;color:var(--muted);font-size:.92rem">{t.desc}</p>
+            <ul class="inclist">
+              {t.includes.map((i,idx) => <li class={i.endsWith("plus:") ? "inc-head" : ""}>{i}</li>)}
+            </ul>
           </div>
         ))}
-      </div>
-
-      <h2 style="margin-top:56px;font-size:1.5rem">Monthly plans</h2>
-      <div class="grid g3" style="margin-top:24px">
-        {monthlyPlans.map(p => (
-          <div class="card">
-            <p class="label">{p.name}</p>
-            <p style="font-family:var(--display);font-size:2rem;font-weight:800;margin-top:8px">{p.price}</p>
-            <p style="margin-top:12px;color:var(--muted)">{p.desc}</p>
-          </div>
-        ))}
-      </div>
-
-      <div style="margin-top:48px;text-align:center">
-        <a class="btn" href="/contact/">Get your free Report Card</a>
       </div>
     </div>
   </section>
+
+  <!-- REBRAND -->
+  <section style="background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <p class="label">Optional — brand path</p>
+      <h2 style="margin-top:10px">Need a brand to match the build?</h2>
+      <p style="margin-top:12px;max-width:58ch;color:var(--muted)">If your look is dated or you're starting from scratch, add a brand path to any build. Most contractors don't need this — but when you do, it makes everything else land harder.</p>
+      <div class="grid g2" style="margin-top:28px">
+        {rebrandOptions.map(r => (
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+              <h3 style="font-size:1.2rem">{r.name}</h3>
+              <span class="bigprice" style="font-size:1.6rem">{r.price}</span>
+            </div>
+            <p style="margin-top:10px;color:var(--muted)">{r.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MONTHLY -->
+  <section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <p class="label">Step two — the monthly engine</p>
+      <h2 style="margin-top:10px">Then keep it growing.</h2>
+      <p style="margin-top:12px;max-width:60ch;color:var(--muted)">Every plan keeps your presence active — posts, reviews, and local SEO — with custom branded images from our content library. Each tier builds on the one before it.</p>
+      <div class="grid g3" style="margin-top:32px;align-items:start">
+        {monthlyPlans.map(p => (
+          <div class={"card price-card" + (p.featured ? " feat" : "")}>
+            {p.featured && <span class="ribbon">Most popular</span>}
+            <p class="label">{p.name}</p>
+            <p class="bigprice">{p.price}<span class="once">{p.per}</span></p>
+            <p style="margin-top:6px;color:var(--brass);font-weight:700;font-size:.92rem">{p.tagline}</p>
+            {p.inheritsFrom && <p class="inherit">Everything in {p.inheritsFrom}, plus:</p>}
+            {!p.inheritsFrom && <p class="inherit">Includes:</p>}
+            <ul class="inclist">
+              {p.includes.map(i => <li>{i}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <p style="margin-top:24px;text-align:center;color:var(--muted);font-size:.9rem">
+        Reputation Management available as an add-on on any plan.
+      </p>
+    </div>
+  </section>
+
+  <section style="background:var(--navy);color:var(--cream);text-align:center">
+    <div class="wrap">
+      <h2 style="max-width:20ch;margin-inline:auto">Not sure which fits? Start with a free Report Card.</h2>
+      <a class="btn" style="margin-top:24px" href="/contact/">Get your free Report Card</a>
+    </div>
+  </section>
+
+  <style>
+    .price-card{position:relative;display:flex;flex-direction:column}
+    .price-card.feat{border:2px solid var(--gold);box-shadow:0 20px 50px rgba(13,27,42,.12)}
+    .ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;white-space:nowrap}
+    .bigprice{font-family:var(--display);font-weight:800;font-size:2.6rem;margin-top:8px;line-height:1;color:var(--navy)}
+    .once{font-size:.9rem;color:var(--muted);font-weight:500}
+    .inherit{margin-top:16px;font-weight:700;color:var(--navy);font-size:.9rem}
+    .inclist{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:8px}
+    .inclist li{padding-left:26px;position:relative;color:var(--muted);font-size:.92rem}
+    .inclist li::before{content:"✓";position:absolute;left:0;top:0;color:var(--brass);font-weight:800}
+    .inc-head{font-weight:700;color:var(--navy)!important;padding-left:0!important}
+    .inc-head::before{content:""!important}
+  </style>
 </Base>

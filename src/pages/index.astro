@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
-import { site, services, steps } from '../siteConfig.js';
+import { site, services, steps, problems } from '../siteConfig.js';
 const compare = [
   { point:"You own the site, domain & code", us:true, them:false },
   { point:"No markup on your ad spend", us:true, them:false },
@@ -35,12 +35,26 @@ const compare = [
   </section>
 
   <!-- STATS BAND -->
-  <section style="background:var(--brass);color:#fff;padding:36px 0">
-    <div class="wrap statband">
-      <div><span class="statnum">8</span><span class="statlbl">dimensions we grade</span></div>
-      <div><span class="statnum">100%</span><span class="statlbl">you own, always</span></div>
-      <div><span class="statnum">0%</span><span class="statlbl">markup on ad spend</span></div>
-      <div><span class="statnum">&lt;1s</span><span class="statlbl">page load target</span></div>
+  <section class="stats" style="padding:0">
+    <div class="wrap">
+      <div class="statrow">
+        <div class="stat">
+          <span class="statnum">8</span>
+          <span class="statlbl">Dimensions we grade<br/>on your Report Card</span>
+        </div>
+        <div class="stat">
+          <span class="statnum">100<span class="pct">%</span></span>
+          <span class="statlbl">Ownership — the site<br/>and assets are yours</span>
+        </div>
+        <div class="stat">
+          <span class="statnum">0<span class="pct">%</span></span>
+          <span class="statlbl">Markup on your<br/>ad spend, ever</span>
+        </div>
+        <div class="stat">
+          <span class="statnum">&lt;1<span class="pct">s</span></span>
+          <span class="statlbl">Page load — fast<br/>enough to rank</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -101,6 +115,26 @@ const compare = [
     </div>
   </section>
 
+
+  <!-- PROBLEM -> FIX -->
+  <section style="background:var(--cream)">
+    <div class="wrap">
+      <p class="label">Sound familiar?</p>
+      <h2 style="margin-top:10px">The problems we hear — and how we fix them.</h2>
+      <div class="grid g3" style="margin-top:36px">
+        {problems.map(pr => (
+          <div class="card prob">
+            <p class="prob-pain">&ldquo;{pr.pain}&rdquo;</p>
+            <p class="prob-fix"><span class="prob-fix-lbl">How we fix it:</span> {pr.fix}</p>
+          </div>
+        ))}
+      </div>
+      <p style="text-align:center;margin-top:30px;font-size:1.2rem;font-family:var(--display);font-weight:800">
+        Marketing should grow your business — <span style="color:var(--brass)">not your stress level.</span>
+      </p>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section style="background:var(--navy);color:var(--cream);text-align:center">
     <div class="wrap">
@@ -113,13 +147,20 @@ const compare = [
   </section>
 
   <style>
+    .stats{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .statrow{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
+    @media(min-width:760px){.statrow{grid-template-columns:repeat(4,1fr)}}
+    .stat{padding:34px 24px;text-align:center;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+    @media(min-width:760px){.stat{border-bottom:none}.stat:last-child{border-right:none}}
+    .stat:nth-child(2n){border-right:none}
+    @media(min-width:760px){.stat:nth-child(2n){border-right:1px solid var(--line)}}
+    .statnum{display:block;font-family:var(--display);font-weight:800;font-size:2.8rem;line-height:1;color:var(--navy);letter-spacing:-.02em}
+    .statnum .pct{color:var(--brass);font-size:1.6rem;vertical-align:super}
+    .statlbl{display:block;margin-top:12px;font-size:.82rem;color:var(--muted);line-height:1.45}
     .hero{display:grid;gap:40px;align-items:center;padding-top:24px}
     @media(min-width:880px){.hero{grid-template-columns:1.05fr .95fr}}
     .hero-img img{width:100%;height:auto;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
-    .statband{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;text-align:center}
-    @media(min-width:760px){.statband{grid-template-columns:repeat(4,1fr)}}
-    .statnum{display:block;font-family:var(--display);font-weight:800;font-size:2.2rem;line-height:1}
-    .statlbl{display:block;margin-top:6px;font-size:.85rem;opacity:.92;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em}
+    
     .svc .ico{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:10px;background:var(--cream);color:var(--brass)}
     .svc:hover .ico{background:var(--gold);color:var(--navy)}
     .pill{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);border:1px solid var(--gold);border-radius:20px;padding:2px 8px;vertical-align:middle}
@@ -132,5 +173,9 @@ const compare = [
     .comp-them{text-align:center;color:var(--muted)}
     .comp-head .comp-us{color:var(--gold)} .comp-head .comp-them{color:var(--cream);opacity:.7}
     @media(max-width:620px){.comp-head,.comp-row{grid-template-columns:1fr 64px 64px}}
+    .prob{display:flex;flex-direction:column}
+    .prob-pain{font-family:var(--display);font-weight:800;font-size:1.05rem;font-style:italic;color:var(--navy);line-height:1.3}
+    .prob-fix{margin-top:14px;color:var(--muted);font-size:.92rem;padding-top:14px;border-top:1px solid var(--line)}
+    .prob-fix-lbl{color:var(--brass);font-weight:700}
   </style>
 </Base>

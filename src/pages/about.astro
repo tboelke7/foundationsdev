@@ -1,28 +1,69 @@
 ---
 import Base from '../layouts/BaseLayout.astro';
+import { site } from '../siteConfig.js';
 ---
-<Base title="About" description="Foundations was built to give trades contractors the web presence their work already earns — with full ownership." path="/about/">
-  <section>
-    <div class="wrap" style="max-width:720px">
+<Base title="About" description="Foundations was built by Troy Boelke to give trades and service businesses the web presence their work already earns — drawn from over a decade in kitchen & bath remodeling and franchise marketing." path="/about/">
+  <section style="background:var(--navy);color:var(--cream);padding:56px 0">
+    <div class="wrap" style="max-width:760px">
       <p class="label">About</p>
-      <h1 style="margin-top:12px">Built for the trades. Owned by you.</h1>
-      <p style="margin-top:24px;font-size:1.1rem">
+      <h1 style="margin-top:12px">Built for the trades, by someone who's been in them.</h1>
+      <p style="margin-top:18px;max-width:54ch;font-size:1.15rem;opacity:.9">
         Foundations exists for one reason: too many great contractors build like an A and show up
-        online like a C. They've got the reviews, the craftsmanship, the referrals — and a website
-        that's slow, thin, or trapped on a platform they'll never own.
+        online like a C. Founder Troy Boelke spent a career watching it happen — and built Foundations
+        to fix it.
       </p>
-      <p style="margin-top:18px;color:var(--muted)">
-        We come out of the remodeling world. We know what wins a homeowner's trust and what loses it.
-        That's why everything we build, you own — the domain, the code, the content, all of it. No
-        markup on your ad spend, no monthly hostage fees, no platform that holds your business ransom.
-      </p>
-      <p style="margin-top:18px;color:var(--muted)">
-        Just a fast, clean, conversion-built web presence that does what your reputation already
-        deserves: gets you found, and gets you chosen.
-      </p>
-      <div style="margin-top:36px">
-        <a class="btn" href="/contact/">Start with a free Report Card</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap about-grid">
+      <div class="about-photo">
+        <img src="/images/troy.webp" alt="Troy Boelke, founder of Foundations Business Development"
+             width="520" height="600" onerror="this.classList.add('ph')" />
+      </div>
+      <div class="about-body">
+        <p class="label">Founder</p>
+        <h2 style="margin-top:8px">Troy Boelke</h2>
+        <p style="margin-top:18px">
+          Troy brings over a decade in the kitchen and bath remodeling business and a business degree
+          from the University of Minnesota. He's worked in most positions across the field — so he
+          understands these businesses from the inside, not from a marketing textbook.
+        </p>
+        <p style="margin-top:16px;color:var(--muted)">
+          For five years, Troy served as Director of Marketing for a national kitchen and bath franchise
+          group, where he helped new and existing franchisees start and grow their businesses. That work
+          meant combining every area of the field — operations, sales, branding, and lead generation —
+          into marketing programs that actually moved the needle for real trades businesses.
+        </p>
+        <p style="margin-top:16px;color:var(--muted)">
+          Later, selling cabinets to dealers across the country gave him the bigger picture: just how
+          many genuinely great businesses and people are out there doing excellent work — and how many
+          of them simply can't be found online. That's the gap Foundations closes.
+        </p>
+        <p style="margin-top:16px">
+          He built Foundations to combine all of that knowledge into a marketing program for new or
+          struggling trades and service businesses — the ones that need to get their footing right, so
+          their great work finally reaches the customers looking for it.
+        </p>
       </div>
     </div>
   </section>
+
+  <section style="background:var(--cream);border-top:1px solid var(--line)">
+    <div class="wrap" style="max-width:760px;text-align:center">
+      <h2 style="max-width:22ch;margin-inline:auto">Everything we build, you own.</h2>
+      <p style="margin-top:16px;color:var(--muted);max-width:54ch;margin-inline:auto">
+        No markup on your ad spend. No monthly platform hostage fees. No rented presence you'll never
+        control. Just a fast, clean foundation that gets you found, and gets you chosen.
+      </p>
+      <a class="btn" style="margin-top:26px" href="/contact/">Start with a free Report Card</a>
+    </div>
+  </section>
+
+  <style>
+    .about-grid{display:grid;gap:44px;align-items:start}
+    @media(min-width:820px){.about-grid{grid-template-columns:.8fr 1.2fr}}
+    .about-photo img{width:100%;height:auto;border-radius:14px;border:1px solid var(--line);box-shadow:0 20px 50px rgba(13,27,42,.12);aspect-ratio:13/15;object-fit:cover;display:block}
+    .about-photo img.ph{background:linear-gradient(135deg,var(--cream),#fff);min-height:420px}
+  </style>
 </Base>

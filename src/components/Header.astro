@@ -1,0 +1,120 @@
+---
+import { site, services, menuGroups, monthlyPlans, buildTiers } from '../siteConfig.js';
+---
+<header class="nav">
+  <div class="wrap navbar">
+    <a class="brand" href="/"><img src="/images/logo-header.webp" alt="Foundations" width="970" height="190" /></a>
+
+    <nav class="mainnav">
+      <!-- SERVICES MEGA MENU -->
+      <div class="navitem">
+        <button class="navlink">Services <span class="chev">▾</span></button>
+        <div class="mega">
+          <div class="mega-grid">
+            {menuGroups.map(group => (
+              <div class="mega-col">
+                <p class="mega-head">{group}</p>
+                {services.filter(s => s.group === group).map(s => (
+                  <a class="mega-link" href={`/services/${s.slug}/`}>
+                    <span class="mega-title">{s.title}{s.addon && <span class="pill">Add-on</span>}</span>
+                    <span class="mega-tease">{s.tease}</span>
+                  </a>
+                ))}
+              </div>
+            ))}
+            <div class="mega-cta">
+              <p class="mega-cta-label">Not sure where to start?</p>
+              <p class="mega-cta-h">Get a free Report Card.</p>
+              <p class="mega-cta-sub">Your web presence graded A–F across 8 dimensions. No pitch, no pressure.</p>
+              <a class="mega-cta-btn" href="/contact/">Get yours →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLANS DROPDOWN -->
+      <div class="navitem">
+        <button class="navlink">Plans <span class="chev">▾</span></button>
+        <div class="mega mega-narrow">
+          <div class="plans-drop">
+            <a class="plans-all" href="/pricing/">
+              <span class="mega-head">All plans</span>
+              <span class="plans-all-h">See builds + monthly →</span>
+            </a>
+            {monthlyPlans.map(p => (
+              <a class="plan-row" href="/pricing/">
+                <span class="plan-name">{p.name}{p.featured && <span class="pill">Popular</span>}</span>
+                <span class="plan-price">{p.price}<span class="plan-per">{p.per}</span></span>
+                <span class="plan-tag">{p.tagline}</span>
+              </a>
+            ))}
+            <a class="plans-foot" href="/contact/">Want a custom plan? Talk to us →</a>
+          </div>
+        </div>
+      </div>
+
+      <a class="navlink solo" href="/blog/">Blog</a>
+      <a class="navlink solo" href="/about/">About</a>
+      <a class="navlink solo" href="/contact/">Contact</a>
+    </nav>
+
+    <div class="navright">
+      <a class="callbox" href={`tel:${site.phoneRaw}`}>
+        <span class="callbox-lbl">Call us</span>
+        <span class="callbox-num">{site.phone}</span>
+      </a>
+      <a class="btn navcta" href="/contact/">Get Started →</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav{position:sticky;top:0;z-index:100;background:var(--navy);border-bottom:1px solid rgba(212,168,85,.18)}
+  .navbar{display:flex;align-items:center;justify-content:space-between;height:74px;gap:24px}
+  .brand img{height:34px;width:auto;display:block}
+  .mainnav{display:flex;align-items:center;gap:8px}
+  .navitem{position:relative}
+  .navlink{background:none;border:0;cursor:pointer;font-family:var(--body);font-size:.98rem;color:var(--cream);opacity:.9;padding:10px 14px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+  .navlink:hover{opacity:1;color:var(--gold);background:rgba(255,255,255,.04)}
+  .chev{font-size:.7rem;opacity:.7}
+  /* MEGA MENU */
+  .mega{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);background:#fff;border-radius:16px;box-shadow:0 30px 70px rgba(0,0,0,.3);padding:26px;opacity:0;visibility:hidden;transition:.18s;min-width:720px;border:1px solid var(--line)}
+  .navitem:hover .mega{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .mega-narrow{min-width:380px;left:auto;right:0;transform:translateY(8px)}
+  .navitem:hover .mega-narrow{transform:translateY(0)}
+  .mega-grid{display:grid;grid-template-columns:repeat(3,1fr) 1.1fr;gap:24px}
+  .mega-head{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+  .mega-link{display:flex;flex-direction:column;padding:8px 10px;border-radius:8px;margin:0 -10px}
+  .mega-link:hover{background:var(--cream)}
+  .mega-title{font-weight:700;color:var(--navy);font-size:.96rem}
+  .mega-tease{font-size:.82rem;color:var(--muted);margin-top:2px}
+  .pill{display:inline-block;margin-left:6px;font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;color:var(--brass);border:1px solid var(--gold);border-radius:20px;padding:1px 7px;vertical-align:middle}
+  .mega-cta{background:var(--navy);border-radius:12px;padding:20px;color:var(--cream);display:flex;flex-direction:column}
+  .mega-cta-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);opacity:.9}
+  .mega-cta-h{font-family:var(--display);font-weight:800;font-size:1.15rem;margin-top:8px;line-height:1.15}
+  .mega-cta-sub{font-size:.82rem;opacity:.8;margin-top:8px;flex:1}
+  .mega-cta-btn{margin-top:14px;color:var(--gold);font-weight:700;font-size:.9rem}
+  /* PLANS DROP */
+  .plans-drop{display:flex;flex-direction:column;gap:2px}
+  .plans-all{display:flex;flex-direction:column;background:var(--cream);border-radius:10px;padding:14px;margin-bottom:8px}
+  .plans-all-h{font-weight:800;color:var(--navy);margin-top:2px}
+  .plan-row{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:10px;border-radius:8px}
+  .plan-row:hover{background:var(--cream)}
+  .plan-name{font-weight:700;color:var(--navy)}
+  .plan-price{font-family:var(--display);font-weight:800;color:var(--navy);text-align:right}
+  .plan-per{font-size:.72rem;color:var(--muted);font-weight:500}
+  .plan-tag{font-size:.8rem;color:var(--muted);grid-column:1/-1}
+  .plans-foot{margin-top:8px;padding:12px;text-align:center;background:var(--navy);color:var(--gold);border-radius:10px;font-weight:700;font-size:.88rem}
+  /* RIGHT */
+  .navright{display:flex;align-items:center;gap:16px}
+  .callbox{display:flex;flex-direction:column;line-height:1.1}
+  .callbox-lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);opacity:.85}
+  .callbox-num{color:var(--cream);font-weight:700;font-size:.95rem}
+  .navcta{padding:11px 20px;font-size:.92rem}
+  /* mobile */
+  .navtoggle{display:none}
+  @media(max-width:980px){
+    .mainnav,.callbox{display:none}
+    .navbar{height:64px}
+  }
+</style>

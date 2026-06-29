@@ -1,5 +1,6 @@
 ---
 import { site } from '../siteConfig.js';
+import Header from '../components/Header.astro';
 const { title, description, path = "" } = Astro.props;
 const canonical = site.url + path;
 const fullTitle = title ? `${title} | ${site.shortName}` : `${site.name} — ${site.tagline}`;
@@ -70,33 +71,63 @@ const schema = {
     @media(min-width:760px){.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}}
     .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px}
     @media(max-width:760px){.nav nav a:not(.call){display:none}}
+
+    footer{background:var(--navy);color:var(--cream);padding:56px 0 28px}
+    .foot{display:grid;gap:36px;grid-template-columns:1.6fr 1fr 1fr 1.2fr}
+    @media(max-width:860px){.foot{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){.foot{grid-template-columns:1fr}}
+    .foot-logo{height:30px;width:auto;margin-bottom:14px}
+    .foot-tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--gold);text-transform:uppercase}
+    .foot-blurb{margin-top:12px;opacity:.78;font-size:.9rem;max-width:38ch}
+    .foot-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+    .foot-badge{font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(212,168,85,.4);color:var(--gold);border-radius:20px;padding:4px 10px}
+    .foot-h{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+    .foot-col a{display:block;color:var(--cream);opacity:.82;font-size:.92rem;margin-bottom:9px}
+    .foot-col a:hover{opacity:1;color:var(--gold)}
+    .foot-areas{opacity:.6;font-size:.78rem;margin-top:10px;line-height:1.7}
+    .foot-base{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);opacity:.55;font-size:.82rem}
   </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="wrap">
-      <a class="brand" href="/">Foundations</a>
-      <nav>
-        <a href="/services/">Services</a>
+  <Header />
+  <main><slot /></main>
+  <footer>
+    <div class="wrap foot">
+      <div class="foot-brand">
+        <img src="/images/logo-header.webp" alt="Foundations" class="foot-logo" />
+        <p class="foot-tag">{site.tagline}</p>
+        <p class="foot-blurb">Owned, fast, conversion-built web presence for Tampa Bay trades and home-service contractors. You own everything we build — no markup, no hostage fees.</p>
+        <div class="foot-badges">
+          <span class="foot-badge">You own 100%</span>
+          <span class="foot-badge">No ad markup</span>
+          <span class="foot-badge">Tampa Bay</span>
+        </div>
+      </div>
+      <div class="foot-col">
+        <p class="foot-h">Services</p>
+        <a href="/services/web-presence-builds/">Web Presence Builds</a>
+        <a href="/services/google-business-profile/">Google Business Profile</a>
+        <a href="/services/local-seo/">Local SEO</a>
+        <a href="/services/lead-generation-ads/">Lead Generation</a>
+        <a href="/services/social-content/">Social & Content</a>
+        <a href="/services/review-generation/">Review Generation</a>
+      </div>
+      <div class="foot-col">
+        <p class="foot-h">Company</p>
         <a href="/pricing/">Pricing</a>
         <a href="/about/">About</a>
         <a href="/blog/">Blog</a>
-        <a class="call" href={`tel:${site.phoneRaw}`}>Call {site.phone}</a>
-      </nav>
-    </div>
-  </header>
-  <main><slot /></main>
-  <footer>
-    <div class="wrap">
-      <strong style="font-family:var(--display);font-size:1.1rem">Foundations Business Development</strong>
-      <p style="margin-top:8px;opacity:.8">{site.tagline}</p>
-      <p style="margin-top:16px">
-        <a href={`tel:${site.phoneRaw}`}>{site.phone}</a> &nbsp;·&nbsp;
+        <a href="/contact/">Contact</a>
+      </div>
+      <div class="foot-col">
+        <p class="foot-h">Get in touch</p>
+        <a href={`tel:${site.phoneRaw}`}>{site.phone}</a>
         <a href={`mailto:${site.email}`}>{site.email}</a>
-      </p>
-      <p style="margin-top:8px;opacity:.6;font-size:.85rem">Serving {site.serviceAreas.join(", ")} · {site.region}, {site.state}</p>
-      <p style="margin-top:20px;opacity:.5;font-size:.8rem">© {new Date().getFullYear()} Foundations Business Development. You own everything we build.</p>
+        <p class="foot-areas">{site.serviceAreas.join(" · ")}</p>
+        <a class="btn navcta" style="margin-top:14px" href="/contact/">Get Started →</a>
+      </div>
     </div>
+    <div class="wrap foot-base">© {new Date().getFullYear()} Foundations Business Development · {site.tagline}</div>
   </footer>
 </body>
 </html>
