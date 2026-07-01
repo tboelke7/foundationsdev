@@ -37,8 +37,36 @@ const schema = {
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet" />
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <!-- ============ HUBSPOT TRACKING PIXEL SLOT ============ -->
-  <!-- Paste your HubSpot tracking script here (portal 246368131). -->
-  <!-- ===================================================== -->
+ <!-- Meta Pixel Code -->
+<script is:inline>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '36583469651298854');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=36583469651298854&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- HubSpot form submit → Meta Lead event -->
+<script is:inline>
+window.addEventListener('message', function(event) {
+  if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormSubmitted') {
+    if (window.fbq) {
+      fbq('track', 'Lead', {
+        content_name: 'Web Presence Report Card'
+      });
+    }
+  }
+});
+</script>
+<!-- End HubSpot Lead listener -->
   <style is:global>
     :root{
       --navy:#0D1B2A; --brass:#B8893A; --gold:#D4A855; --cream:#F5F0E8;
