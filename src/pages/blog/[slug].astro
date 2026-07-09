@@ -12,7 +12,11 @@ const { Content } = await post.render();
   <section>
     <article class="wrap" style="max-width:680px">
       <p class="label">{post.data.pubDate.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</p>
-      <h1 style="margin-top:12px">{post.data.title}</h1>
+{post.data.hero && (
+  <img src={post.data.hero} alt={post.data.title}
+       style="width:100%;border-radius:12px;margin-bottom:24px;object-fit:cover;aspect-ratio:4/3" />
+)}      
+<h1 style="margin-top:12px">{post.data.title}</h1>
       <div style="margin-top:28px;font-size:1.08rem" class="prose">
         <Content />
       </div>
