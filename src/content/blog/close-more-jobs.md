@@ -1,7 +1,10 @@
 ---
+---
 title: "7 Sales Techniques That Close More Jobs — Without Dropping Your Price"
 description: "Most contractors think they lose jobs on price. They don't — they lose on speed, trust, and follow-through. Seven field-tested techniques to close more work."
 pubDate: 2026-07-09
+hero: /images/close-more-jobs.jpg
+---
 ---
 
 Most contractors think they lose jobs on price. They don't. They lose them on speed, trust, and follow-through — the three things the homeowner actually feels before they ever compare a number.
