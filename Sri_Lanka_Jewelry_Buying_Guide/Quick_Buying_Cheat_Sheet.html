@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quick Buying Cheat Sheet</title>
+<style>
+:root{
+  --ink:#20242b; --muted:#5b6472; --line:#e3ddd0; --bg:#faf7f1; --card:#ffffff;
+  --navy:#123a4f; --teal:#1c6b7d; --gold:#b8862f; --gold-soft:#f3e7c9;
+  --good:#1c7a4a; --warn:#b3701a; --bad:#a5362d;
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.5;font-size:15px}
+.wrap{max-width:860px;margin:0 auto;padding:20px 18px 60px}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0}
+a{color:var(--teal);text-decoration:none;word-break:break-word}
+.cover{background:linear-gradient(150deg,var(--navy),var(--teal));color:#fff;border-radius:14px;
+  padding:34px 26px;margin-bottom:22px}
+.cover h1{font-size:30px;color:#fff}
+.cover .sub{opacity:.92;margin-top:8px;font-size:15px;max-width:600px}
+.cover .meta{margin-top:16px;font-size:12.5px;opacity:.85}
+.badgerow{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+  padding:3px 9px;border-radius:20px;font-size:11.5px}
+.note{background:var(--gold-soft);border:1px solid #e6d4a3;border-radius:10px;padding:12px 14px;
+  font-size:13px;margin:14px 0}
+.note b{color:#7a5a12}
+.warnbox{background:#fbeeea;border:1px solid #e7c3b8;border-radius:10px;padding:12px 14px;font-size:13px;margin:14px 0}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:20px}
+.toc h3{font-size:15px;margin-bottom:8px;color:var(--navy)}
+.toc ol{margin:0;padding-left:20px;columns:2;column-gap:26px;font-size:13.5px}
+.toc a{color:var(--ink)}
+section{margin-top:30px}
+.cat-h{border-bottom:3px solid var(--gold);padding-bottom:6px;margin-bottom:6px}
+.cat-h h2{font-size:22px;color:var(--navy);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.cat-h .code{font-size:12px;background:var(--navy);color:#fff;padding:2px 8px;border-radius:5px;font-family:monospace}
+.blurb{color:var(--muted);font-size:13.5px;margin:8px 0 14px}
+.band{margin:18px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);
+  break-inside:avoid}
+.band-h{background:#f0ece2;padding:10px 14px;border-bottom:1px solid var(--line)}
+.band-h h3{font-size:16px;color:var(--navy)}
+.band-h .desc{font-size:12.5px;color:var(--muted);margin-top:3px}
+.band-body{padding:12px 14px}
+.refbox{background:#f7f4ec;border:1px dashed #cdbf9c;border-radius:9px;padding:10px 12px;margin-bottom:12px;font-size:13px}
+.refbox .rng{font-size:19px;color:var(--gold);font-weight:700;font-family:Georgia,serif}
+.refbox .obs{color:var(--muted);font-size:12px;margin-top:3px}
+.econ{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.econ .box{border:1px solid var(--line);border-radius:8px;padding:9px 11px;background:#fff}
+.econ h5{font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--teal);margin:0 0 6px}
+.econ table{width:100%;border-collapse:collapse;font-size:12px}
+.econ td{padding:2px 0;vertical-align:top}
+.econ td.v{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.verdict{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700;color:#fff}
+.v-Works{background:var(--good)} .v-Marginal{background:var(--warn)} .v-Avoid{background:var(--bad)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+.card{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;break-inside:avoid;
+  display:flex;flex-direction:column}
+.photo{position:relative;width:100%;aspect-ratio:1/1;background:#f2eee6;overflow:hidden}
+.photo-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:10px;color:#9a9384;font-size:11.5px}
+.photo-fallback .big{font-size:26px;margin-bottom:4px}
+.photo img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
+.card-b{padding:9px 11px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-b .nm{font-size:13px;font-weight:700;line-height:1.25}
+.card-b .rt{font-size:11.5px;color:var(--muted)}
+.price{font-size:16px;font-weight:800;color:var(--navy);font-family:Georgia,serif}
+.price .list{font-size:11px;color:#a99;text-decoration:line-through;font-weight:400;margin-left:6px}
+.price .na{font-size:12px;color:var(--warn);font-weight:600}
+.pos{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;
+  padding:2px 6px;border-radius:4px;background:#eef2f2;color:var(--teal);border:1px solid #d8e2e2}
+.specs{border-top:1px solid var(--line);padding-top:6px;font-size:11px;display:grid;grid-template-columns:auto 1fr;gap:1px 8px}
+.specs dt{color:var(--muted)} .specs dd{margin:0;font-weight:500}
+.notes{font-size:11px;color:#4a5260;font-style:italic}
+.conf{font-size:10px;color:#9a8f7a}
+.src{font-size:11px}
+/* size guide */
+.sizewrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.rounds{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;margin-top:8px}
+.rd{display:flex;flex-direction:column;align-items:center;gap:4px}
+.rd .dot{background:radial-gradient(circle at 35% 30%,#eaf3ff,#7fb0d6 60%,#2f6b93);border-radius:50%;
+  border:1px solid #33617f}
+.rd .lb{font-size:11px;color:var(--muted)}
+.ovals{display:flex;flex-wrap:wrap;align-items:flex-end;gap:20px;margin-top:16px}
+.ov .sh{background:radial-gradient(circle at 35% 30%,#fff2f6,#d98fb0 60%,#a53d6b);border:1px solid #8a3560}
+/* tables */
+table.grid{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px;background:#fff}
+table.grid th,table.grid td{border:1px solid var(--line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+table.grid th{background:var(--navy);color:#fff;font-weight:600;text-align:right}
+table.grid td:first-child,table.grid th:first-child{text-align:left}
+table.grid tr:nth-child(even) td{background:#faf8f3}
+.check{columns:1;font-size:13.5px}
+.check li{margin:5px 0}
+ul.flags li{margin:6px 0;font-size:13.5px}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
+@media print{
+  body{font-size:11px;background:#fff}
+  .wrap{max-width:none;padding:0}
+  a{color:var(--ink)}
+  .cover{border-radius:0}
+  section{break-inside:auto}
+  .cards{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:560px){.cards{grid-template-columns:1fr}.econ{grid-template-columns:1fr}.toc ol{columns:1}}
+
+@page{size:A4 portrait;margin:12mm 10mm}</style></head><body><div class="wrap">
+      <div class="cover" style="padding:22px"><h1 style="font-size:22px">Quick Buying Cheat Sheet</h1>
+        <div class="sub">Stand in the shop &rarr; estimate U.S. retail &rarr; read your max price.</div>
+        <div class="meta">Researched 2026-08-11. Asking-price reference, not an appraisal.</div></div>
+      <section><div class="cat-h"><h2>Work-Backward Table</h2></div>
+        <table class="grid"><tr><th>Expected U.S. Retail</th><th>Ideal Outright</th><th>Max Outright</th>
+          <th>Preferred Consign. Net</th><th>Max Consign. Net</th></tr><tr><td>$250</td><td>$100</td><td>$125</td><td>$125</td><td>$150</td></tr><tr><td>$350</td><td>$140</td><td>$175</td><td>$175</td><td>$210</td></tr><tr><td>$500</td><td>$200</td><td>$250</td><td>$250</td><td>$300</td></tr><tr><td>$750</td><td>$300</td><td>$375</td><td>$375</td><td>$450</td></tr><tr><td>$1,000</td><td>$400</td><td>$500</td><td>$500</td><td>$600</td></tr><tr><td>$1,500</td><td>$600</td><td>$750</td><td>$750</td><td>$900</td></tr><tr><td>$2,000</td><td>$800</td><td>$1,000</td><td>$1,000</td><td>$1,200</td></tr><tr><td>$2,500</td><td>$1,000</td><td>$1,250</td><td>$1,250</td><td>$1,500</td></tr><tr><td>$5,000</td><td>$2,000</td><td>$2,500</td><td>$2,500</td><td>$3,000</td></tr></table>
+        <div class="conf" style="margin-top:6px">Outright = pay 40&ndash;50% of retail.
+          Consignment net to jeweler = 50&ndash;60% of retail.
+          Add landed costs: ~$60+ insured shipping, 5.5% duty, 3% processing, 5% returns reserve.</div>
+      </section>
+      <section><div class="cat-h"><h2>Category Reality Check (observed asking-price spans)</h2></div>
+        <table class="grid"><tr><th>Gem category</th><th>Observed asking-price span</th><th>Priced comps</th></tr><tr><td>Ceylon / Sri Lankan Moonstone</td><td>$60&ndash;$7,480</td><td>14/22</td></tr><tr><td>Rainbow Moonstone / White Labradorite</td><td>$170&ndash;$1,590</td><td>6/12</td></tr><tr><td>Ceylon / Sri Lankan Blue Sapphire</td><td>$170&ndash;$128,000</td><td>10/21</td></tr><tr><td>Star Sapphire</td><td>$280&ndash;$10,660</td><td>6/11</td></tr><tr><td>Padparadscha Sapphire</td><td>$2,588&ndash;$405,000</td><td>7/10</td></tr><tr><td>Chrysoberyl Cat&#x27;s Eye</td><td>$58&ndash;$25,500</td><td>10/12</td></tr><tr><td>Alexandrite (Colour-Change)</td><td>$2,080&ndash;$167,912</td><td>7/11</td></tr><tr><td>Spinel</td><td>$1,491&ndash;$52,280</td><td>11/15</td></tr><tr><td>Zircon (Natural Mineral)</td><td>$595&ndash;$19,810</td><td>4/14</td></tr><tr><td>Hessonite Garnet</td><td>$245&ndash;$925</td><td>3/13</td></tr></table>
+      </section>
+      <section><div class="cat-h"><h2 style="color:var(--bad)">Top Red Flags</h2></div>
+        <div class="warnbox"><ul style="margin:0;padding-left:18px"><li>Origin claimed but NO documentation on an expensive stone.</li><li>&quot;Unheated sapphire&quot; with no lab report at a high price.</li><li>Seller won&#x27;t give you the carat weight or the mm dimensions.</li><li>Metal purity is vague (&quot;gold colour&quot;, &quot;German silver&quot;, no hallmark).</li><li>Tourist retail price presented as &quot;wholesale&quot; or &quot;special price for you&quot;.</li><li>Price justified mainly by a story (mine visit, family, luck) rather than the stone.</li><li>A big premium with no visible stone quality (weak flash / weak star / dull colour) to justify it.</li><li>&quot;Certificate&quot; from an unknown local lab, or a photocopy that doesn&#x27;t match the stone.</li></ul></div>
+      </section>
+      <div class="foot">Full detail, photos and per-band economics in the Field Guide PDF &middot; 2026-08-11.</div>
+    </div></body></html>
