@@ -45,8 +45,12 @@ children.push(new Table({
         new TextRun({ text: 'How to read the prices. ', bold: true, size: 19, color: '7A5A12' }),
         new TextRun({ text: '"Comfortable U.S. retail" is what a U.S. boutique or online seller could realistically ASK and achieve for a comparable finished piece — not what to pay for it, and not an appraisal. These are fine-jewelry pieces (genuine Ceylon sapphires set in gold with diamonds), so values run much higher than silver goods.', size: 19 })
       ]}),
+      new Paragraph({ spacing: { after: 60 }, children: [
+        new TextRun({ text: 'Each piece shows two estimates. ', bold: true, size: 19, color: '7A5A12' }),
+        new TextRun({ text: '"Heated" assumes good-quality HEATED Ceylon sapphire (the commercial norm). "Unheated (with lab report)" assumes the main/center sapphire is natural unheated with a reputable report (GRS / GIA / SSEF / Lotus). Carats are estimated from the photos.', size: 19 })
+      ]}),
       new Paragraph({ children: [
-        new TextRun({ text: 'Estimates assume HEATED Ceylon sapphires of good commercial quality and the gold + diamond content visible in the photos, with carat weights estimated from images. Confirm on each piece: carat weight, heated vs unheated + lab report, metal purity/weight, and total diamond carat — an unheated stone with a GRS/GIA/SSEF report can multiply the value several times over.', size: 19, italics: true })
+        new TextRun({ text: 'The unheated premium is largest on single-stone blue-sapphire pieces and much smaller on multi-color fancy-melee pieces (heat status there is commercially minor and rarely certified). It does not apply to the moonstone / cat’s-eye pieces (moonstone is untreated), and for star sapphire the key is “no diffusion” + a sharp natural star rather than heat. Always confirm carat, treatment + report, metal purity/weight, and total diamond carat.', size: 19, italics: true })
       ]})
     ]
   })]})]
@@ -85,21 +89,42 @@ picks.forEach((p, i) => {
   });
   children.push(line('Type / Gem / Metal:', `${p.jtype} · ${p.gem} · ${p.metal}`));
   children.push(line('What it is:', p.specifics));
+  // Heated price line
   children.push(new Paragraph({
-    spacing: { after: 30 },
+    spacing: { after: 20 },
     children: [
-      new TextRun({ text: 'Comfortable U.S. retail (est.):  ', bold: true, size: 20, color: NAVY }),
+      new TextRun({ text: 'Est. U.S. retail — heated:  ', bold: true, size: 20, color: NAVY }),
       new TextRun({ text: `$${p.lo.toLocaleString()} – $${p.hi.toLocaleString()}`, bold: true, size: 22, color: GREEN })
+    ]
+  }));
+  // Unheated price line (or N/A)
+  const uhRun = (p.uh_lo && p.uh_hi)
+    ? new TextRun({ text: `$${p.uh_lo.toLocaleString()} – $${p.uh_hi.toLocaleString()}`, bold: true, size: 22, color: GOLD })
+    : new TextRun({ text: 'not applicable (untreated stone — see note)', italics: true, size: 19, color: GREY });
+  children.push(new Paragraph({
+    spacing: { after: 20 },
+    children: [
+      new TextRun({ text: 'Est. U.S. retail — unheated (w/ report):  ', bold: true, size: 20, color: NAVY }),
+      uhRun
+    ]
+  }));
+  children.push(new Paragraph({
+    spacing: { after: 20 },
+    children: [
+      new TextRun({ text: 'Heated vs unheated:  ', bold: true, size: 17, color: GREY }),
+      new TextRun({ text: p.heat, italics: true, size: 17, color: GREY })
     ]
   }));
   children.push(new Paragraph({
     spacing: { after: 60 },
-    children: [new TextRun({ text: `Note: ${p.note}`, italics: true, size: 17, color: GREY })]
+    children: [new TextRun({ text: `Also confirm: ${p.note}`, italics: true, size: 17, color: GREY })]
   }));
-  // page break after every 2 pieces for clean layout
-  if (i % 2 === 1 && i !== picks.length - 1) {
-    children.push(new Paragraph({ children: [new PageBreak()] }));
-  }
+  // light divider between pieces; Word paginates naturally (heading+image kept together)
+  children.push(new Paragraph({
+    spacing: { after: 60 },
+    border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: 'E3DDD0' } },
+    children: [new TextRun({ text: '' })]
+  }));
 });
 
 // ---- Footer note ----

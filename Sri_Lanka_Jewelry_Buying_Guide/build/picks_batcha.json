@@ -12,7 +12,10 @@
   "hi": 6500,
   "note": "Carat + heat/cert drive this most. Estimate assumes a heated Ceylon stone; an UNHEATED stone with a GRS/GIA report can push comfortable retail to $10k+.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 9000,
+  "uh_hi": 20000,
+  "heat": "Biggest driver here \u2014 a fine UNHEATED Ceylon blue with a GRS/GIA/SSEF report commands a large premium over heated."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-18.jpg",
@@ -27,7 +30,10 @@
   "hi": 1400,
   "note": "Per pair. Halo studs ~$600\u20131,300; pear drop earrings ~$700\u20131,400, depending on carat and gold weight.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 1000,
+  "uh_hi": 2600,
+  "heat": "Modest premium; small halo/drop stones are rarely individually certified, so unheated mainly matters if papers come with them."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-38.jpg",
@@ -42,7 +48,10 @@
   "hi": 3800,
   "note": "Depends heavily on total sapphire + diamond carat weight; confirm both.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 2800,
+  "uh_hi": 6500,
+  "heat": "Premium applies to the sapphires, but melee is seldom certified unheated \u2014 realistic only if a report accompanies the pair."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-49.jpg",
@@ -57,7 +66,10 @@
   "hi": 5500,
   "note": "Value scales with total carat weight (often 8\u201312 ct+). Confirm cttw and gold weight.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 2800,
+  "uh_hi": 6500,
+  "heat": "Multi-color fancy melee \u2014 heat status is commercially minor here and rarely certified; treat the premium as small."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-22.jpg",
@@ -72,7 +84,10 @@
   "hi": 6500,
   "note": "Higher end due to princess-cut calibrated sapphires + diamond borders; confirm cttw.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 3300,
+  "uh_hi": 7500,
+  "heat": "Fancy melee \u2014 heat status commercially minor; small premium only."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-19.jpg",
@@ -87,7 +102,10 @@
   "hi": 4500,
   "note": "Heart-cut fancy sapphires are labor-intensive; confirm total carat and drop count.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 2300,
+  "uh_hi": 5200,
+  "heat": "Fancy melee \u2014 heat status commercially minor; small premium only."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-27.jpg",
@@ -102,7 +120,10 @@
   "hi": 1600,
   "note": "Modest diamond/sapphire content; value is mostly design + gold weight. A signature branding piece.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 750,
+  "uh_hi": 1700,
+  "heat": "One small accent sapphire \u2014 heat is immaterial; value is the design + gold."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-09.jpg",
@@ -117,7 +138,10 @@
   "hi": 2800,
   "note": "Confirm sapphire + diamond carat; two-tone gold adds appeal.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 1350,
+  "uh_hi": 3200,
+  "heat": "Fancy melee \u2014 heat status commercially minor; small premium only."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-26.jpg",
@@ -132,7 +156,10 @@
   "hi": 3200,
   "note": "Pink hue quality and carat drive value; confirm stone weight.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 2400,
+  "uh_hi": 5500,
+  "heat": "Pink-sapphire unheated premium is real but smaller than blue."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-01.jpg",
@@ -147,7 +174,10 @@
   "hi": 2000,
   "note": "Moonstone quality (blue sheen strength) + sapphire count drive value; confirm metal (silver vs gold).",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": null,
+  "uh_hi": null,
+  "heat": "Not applicable \u2014 moonstone is never heat-treated; the sapphire accents are minor, so there is no unheated premium."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-40.jpg",
@@ -162,7 +192,10 @@
   "hi": 4000,
   "note": "Per ring. Star sharpness, body color and carat drive value; a clean centered star + lab note lifts it.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 2000,
+  "uh_hi": 5500,
+  "heat": "For STAR sapphire the value axis is 'no diffusion/lattice treatment' + a sharp natural star (AGL/GIA note) more than heat; that is what lifts it."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-42.jpg",
@@ -177,7 +210,10 @@
   "hi": 2800,
   "note": "Confirm moonstone size/quality and sapphire count/metal.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": null,
+  "uh_hi": null,
+  "heat": "Not applicable \u2014 moonstone is untreated; the sapphire pav\u00e9 is minor."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-06.jpg",
@@ -192,7 +228,10 @@
   "hi": 4000,
   "note": "Confirm total sapphire + diamond carat and gold weight (fringe styles use more gold).",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 2400,
+  "uh_hi": 5500,
+  "heat": "Yellow-sapphire unheated premium is modest; watch for beryllium/diffusion treatment (must be disclosed) \u2014 that is a bigger negative than heat."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-33.jpg",
@@ -207,7 +246,10 @@
   "hi": 3500,
   "note": "Diamond content is significant; confirm total diamond carat + sapphire size.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 2300,
+  "uh_hi": 5500,
+  "heat": "Premium applies to the pear-sapphire center; heavy diamond content dilutes the overall % impact."
  },
  {
   "file": "/home/user/foundationsdev/Sri_Lanka_Jewelry_Buying_Guide/build/docx_imgs/BG-11.jpg",
@@ -222,6 +264,9 @@
   "hi": 2600,
   "note": "Priced as a set; confirm whether sold together and the sapphire carats.",
   "w": 825,
-  "h": 1100
+  "h": 1100,
+  "uh_lo": 1800,
+  "uh_hi": 3800,
+  "heat": "Pink-sapphire unheated premium is real but smaller than blue."
  }
 ]
