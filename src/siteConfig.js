@@ -200,6 +200,99 @@ export const monthlyPlans = [
     ] },
 ];
 
+// ============================================================
+// INTERNATIONAL GUEST EXPERIENCE AUDIT (Sri Lanka hospitality)
+// Page: /international-guest-audit/
+// Copy rules: no AI in our process, no em dashes, Sri Lanka only,
+// no health claims, no client names or testimonials yet.
+// ============================================================
+export const guestAudit = {
+  path: "/international-guest-audit/",
+  title: "International Guest Experience Audit",
+  navTease: "Sri Lanka hospitality: guest-ready English",
+  // HubSpot: same form as /contact/. CTAs add ?service_interest=<value> to the page URL.
+  // To capture it as a field, create a contact property with the internal name below and
+  // add it to the form as a hidden field. Until then, the page URL on each submission
+  // still shows which inquiry it was.
+  form: {
+    formId: "c03b7a6e-540a-47dc-81c8-4f33737411c5",
+    serviceField: "service_interest",
+    auditValue: "Guest Experience Audit",
+    partnerValue: "Audit Partner Program",
+  },
+  capabilities: [
+    { title: "Bilingual Meaning Verification",
+      body: "Is the translation actually saying what you intend? We catch cases where the English is technically correct but the meaning is wrong. Our team includes native fluency in both English and Sri Lankan languages." },
+    { title: "Native-Level English QA",
+      body: "Every guest-facing word is reviewed for clarity, tone, and brand fit. Not just grammar. We make sure it reads naturally to an international guest." },
+    { title: "Human-Verified Accountability",
+      body: "We take responsibility for the final output. Every correction is verified by a human expert before you receive it. That checkpoint is what makes this different from AI-only solutions." },
+  ],
+  tiers: [
+    { name: "Quick Guest Language Review", price: "$75 to $150", per: "one-time",
+      fit: "Perfect for cafes, small restaurants, guesthouses.",
+      includes: [
+        "Review of all guest-facing materials, everything they see and read",
+        "Menus, signage, website, policies, booking confirmations",
+        "Issues identified with clear corrections",
+        "Corrected copy ready to implement",
+        "Turnaround: 5 to 7 business days",
+      ],
+      cta: "Request a Review" },
+    { name: "Full Property Audit + Remediation", price: "$300 to $2,500+", per: "one-time", featured: true,
+      fit: "Perfect for hotels, resorts, multi-outlet properties.",
+      includes: [
+        "Complete audit of everything guests see and read: signage and wayfinding, menus, website and booking copy, policies, room materials, promotional content",
+        "All issues prioritized with corrected copy",
+        "Remediation coordination with your printer, designer, or web team",
+        "Turnaround: 10 to 15 business days",
+      ],
+      sizing: [
+        { label: "Boutique or small resort", price: "$300 to $750" },
+        { label: "Mid-size resort", price: "$750 to $1,500" },
+        { label: "Large or luxury resort", price: "$1,500 to $2,500+" },
+      ],
+      cta: "Request an Audit" },
+    { name: "Annual Assurance", price: "$150 to $450", per: "per month",
+      fit: "For large resorts and properties launching new menus, signage, and campaigns regularly.",
+      includes: [
+        "New content reviewed and returned within 2 to 3 business days",
+        "Quarterly consistency and brand-voice reviews",
+        "Priority turnaround",
+      ],
+      cta: "Learn More" },
+  ],
+  process: [
+    { title: "Comprehensive audit", body: "We review everything your guests see and read, physical and digital." },
+    { title: "Issue identification", body: "Every problem is found and ranked by severity, from wrong meaning to brand-quality polish." },
+    { title: "Human quality review", body: "Every issue is verified by our bilingual team. We confirm meaning, tone, and brand fit. If something is ambiguous, we ask you. We never guess." },
+    { title: "Corrected copy delivery", body: "You receive a clear report: current copy, recommended copy, and why. Ready to implement." },
+    { title: "Implementation support", body: "We coordinate with your printer, designer, or web team as needed. You own the relationships and the accounts." },
+  ],
+  faqs: [
+    { q: "Why not just use AI, like ChatGPT?",
+      a: "AI can beautifully rewrite a sentence. That's the easy part. But a mistranslation can sound perfect in English. AI will polish it, you'll publish it, and your guests will wonder why your menu sounds strange. AI has no way to verify that the meaning is right, and no one is accountable if it sounds off to your guests. Every piece of copy we deliver goes through human review. We verify the meaning, not just the grammar. We own the checkpoint." },
+    { q: "How is this different from a translation service?",
+      a: "We don't translate. We verify meaning, tone, and brand fit in the English your guests already see, and we position unfamiliar items so international guests understand and want them." },
+    { q: "Is this one invoice or two?",
+      a: "One. Audit, corrections, and implementation support are a single package. No separate remediation fee." },
+    { q: "What exactly do you audit?",
+      a: "Everything your guests encounter: signage, menus, website and booking pages, confirmation emails, room materials, policies, and promotional content. What they see and what they read." },
+    { q: "Do you work with our printer or designer?",
+      a: "Yes. We provide corrected copy your vendors can implement directly, and we coordinate with them at no extra cost." },
+    { q: "Can we start small?",
+      a: "Absolutely. Many properties start with a Quick Review and expand to a full audit later. No lock-in." },
+    { q: "What if we update menus and signage often?",
+      a: "That's what Annual Assurance is for. Send us new content and it comes back reviewed within 2 to 3 business days." },
+    { q: "Do you work outside Sri Lanka?",
+      a: "We currently specialize in Sri Lankan hospitality because of our deep cultural and bilingual foundation there." },
+  ],
+};
+
+// Link to the audit request form, tagged with the inquiry type (see guestAudit.form).
+export const guestAuditHref = (value) =>
+  `${guestAudit.path}?${guestAudit.form.serviceField}=${encodeURIComponent(value)}#request`;
+
 export const steps = [
   { n:"01", title:"We grade you", body:"Start with a free Web Presence Report Card — your site, profile, reviews, and SEO scored A–F across 8 dimensions." },
   { n:"02", title:"We build the base", body:"A fast, owned website and a fully optimized Google profile — the foundation everything else stands on." },

@@ -1,0 +1,436 @@
+---
+import Base from '../layouts/BaseLayout.astro';
+import TouchpointPanel from '../components/TouchpointPanel.astro';
+import { site, guestAudit as ga, guestAuditHref } from '../siteConfig.js';
+
+const f = ga.form;
+const auditHref = guestAuditHref(f.auditValue);
+const partnerHref = guestAuditHref(f.partnerValue);
+
+const see = ["Signage and wayfinding", "Menus and pricing", "Policies and instructions", "Room materials", "Website and booking pages"];
+const read = ["Booking confirmations", "Guest communications", "Promotional materials", "Social media"];
+const issues = [
+  "Awkward phrasing that reads like direct translation",
+  "Mistranslations that keep the words but lose the meaning",
+  "Inconsistent tone across touchpoints",
+  "Copy that confuses rather than welcomes",
+];
+const pipeline = ["Concept", "Translation", "Design", "Print"];
+const partnerFlow = [
+  "Your client sends artwork for approval.",
+  "You forward it to Foundations for language QA.",
+  "We return it marked Approved or Changes Recommended, with corrected copy.",
+  "You deliver final materials to your client.",
+];
+
+const description = "We audit the English your international guests see and read, from menus and signage to websites and policies, and deliver corrected, guest-ready copy. For hospitality businesses in Sri Lanka.";
+
+const extraSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": ga.title,
+    "serviceType": "Guest experience and brand language audit",
+    "description": description,
+    "url": site.url + ga.path,
+    "areaServed": { "@type": "Country", "name": "Sri Lanka" },
+    "audience": { "@type": "BusinessAudience", "audienceType": "Hotels, resorts, restaurants, guesthouses, and hospitality businesses" },
+    "provider": { "@type": "Organization", "name": site.name, "url": site.url, "email": site.email, "telephone": site.phone },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": ga.faqs.map(x => ({ "@type": "Question", "name": x.q, "acceptedAnswer": { "@type": "Answer", "text": x.a } })),
+  },
+];
+---
+<Base title={ga.title} description={description} path={ga.path} extraSchema={extraSchema} leadName={f.auditValue}>
+
+  <!-- 5.1 HERO -->
+  <section class="ga-hero">
+    <div class="wrap ga-hero-grid">
+      <div>
+        <p class="label" style="color:var(--gold)">Hospitality · Sri Lanka</p>
+        <h1 style="margin-top:14px">International Guest Experience Audit</h1>
+        <p class="ga-hero-h2">Make sure your guests see and hear what you intend.</p>
+        <p class="ga-hero-sub">
+          We audit your guest-facing English, your website, menus, signage, policies, and materials,
+          and make sure it communicates clearly, naturally, and at the quality level of your brand.
+        </p>
+        <p class="ga-support">Human expert. Bilingual verification. Zero guessing.</p>
+        <div class="ga-ctas">
+          <a class="btn" href={auditHref} data-service={f.auditValue}>Request an Audit</a>
+          <a class="btn btn-ghost ga-ghost-light" href="#partners">Explore Our Partner Program</a>
+        </div>
+      </div>
+      <TouchpointPanel />
+    </div>
+  </section>
+
+  <!-- 5.2 THE CHALLENGE -->
+  <section style="background:#fff;border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <p class="label">The challenge</p>
+      <h2 style="margin-top:10px;max-width:24ch">Your international guests encounter English across every touchpoint.</h2>
+      <div class="grid g2" style="margin-top:32px">
+        <div class="card ga-cream">
+          <p class="label">What they see</p>
+          <ul class="ga-list">{see.map(s => <li>{s}</li>)}</ul>
+        </div>
+        <div class="card ga-cream">
+          <p class="label">What they read</p>
+          <ul class="ga-list">{read.map(s => <li>{s}</li>)}</ul>
+        </div>
+      </div>
+
+      <p style="margin-top:36px;font-weight:700;color:var(--navy)">And this English frequently contains:</p>
+      <div class="ga-issues">
+        {issues.map(i => <p class="ga-issue">{i}</p>)}
+      </div>
+
+      <div class="ga-accountability">
+        <div>
+          <h3 style="font-size:1.5rem">These aren't grammar problems. They're accountability problems.</h3>
+          <p style="margin-top:14px;color:var(--muted)">
+            Content moves from concept to translation to design to print without anyone owning the final
+            checkpoint. No one verifies that the meaning is actually right, not just grammatically acceptable.
+          </p>
+          <p style="margin-top:14px;color:var(--muted)">
+            The cheapest moment to catch this is before your guests see it printed or published.
+            That's where we come in. <strong style="color:var(--navy)">We own the checkpoint.</strong>
+          </p>
+        </div>
+        <div class="ga-pipe" aria-label="Concept, Translation, Design, Print, then the Foundations checkpoint before guests see it">
+          {pipeline.map(p => <span class="ga-pipe-step">{p}</span>)}
+          <span class="ga-pipe-step ga-pipe-check">Foundations checkpoint</span>
+          <span class="ga-pipe-step ga-pipe-guest">Your guests</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.3 HOW WE WORK -->
+  <section>
+    <div class="wrap">
+      <p class="label">How we work</p>
+      <h2 style="margin-top:10px">Three capabilities, one accountable checkpoint.</h2>
+      <div class="grid g3" style="margin-top:36px">
+        {ga.capabilities.map((c, i) => (
+          <div class="card">
+            <span class="ga-num">{String(i + 1).padStart(2, "0")}</span>
+            <h3 style="font-size:1.2rem;margin-top:10px">{c.title}</h3>
+            <p style="margin-top:10px;color:var(--muted)">{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.4 WE POSITION, NOT JUST CORRECT -->
+  <section class="ga-dark">
+    <div class="wrap">
+      <p class="label" style="color:var(--gold)">We position, not just correct</p>
+      <h2 style="margin-top:10px;max-width:26ch">Guests see opportunity, not confusion.</h2>
+      <p style="margin-top:18px;max-width:62ch;opacity:.88;font-size:1.05rem">
+        We understand what international guests respond to. Our audits reposition your Sri Lankan offerings
+        so guests see opportunity, not confusion, and actually try the things that make your property special.
+      </p>
+      <p class="label" style="margin-top:36px;color:var(--gold)">What you receive, for every issue</p>
+      <div class="ga-ba">
+        <div class="ga-ba-card ga-before">
+          <p class="ga-ba-tag">Current copy</p>
+          <p class="ga-ba-read">What your guests see today.</p>
+        </div>
+        <span class="ga-ba-arrow" aria-hidden="true">→</span>
+        <div class="ga-ba-card ga-after">
+          <p class="ga-ba-tag">Recommended copy</p>
+          <p class="ga-ba-read">Ready to implement.</p>
+        </div>
+        <span class="ga-ba-arrow" aria-hidden="true">→</span>
+        <div class="ga-ba-card ga-before">
+          <p class="ga-ba-tag">And why</p>
+          <p class="ga-ba-read">So you know what changed and what it protects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.5 SERVICES AND PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <p class="label">Services and pricing</p>
+      <h2 style="margin-top:10px">Pick the scope that fits your property.</h2>
+      <div class="grid g3" style="margin-top:40px;align-items:start">
+        {ga.tiers.map(t => (
+          <div class={"card ga-price" + (t.featured ? " feat" : "")}>
+            {t.featured && <span class="ribbon">Most properties</span>}
+            <p class="label">{t.name}</p>
+            <p class="ga-bigprice">{t.price}</p>
+            <p class="ga-per">{t.per}</p>
+            <p style="margin-top:12px;color:var(--brass);font-weight:700;font-size:.92rem">{t.fit}</p>
+            <ul class="inclist">{t.includes.map(i => <li>{i}</li>)}</ul>
+            {t.sizing && (
+              <div class="ga-sizing">
+                <p class="ga-sizing-h">Sizing guide</p>
+                {t.sizing.map(s => <p class="ga-sizing-row"><span>{s.label}</span><span>{s.price}</span></p>)}
+              </div>
+            )}
+            <a class={"btn ga-price-btn" + (t.featured ? "" : " btn-ghost")} href={auditHref} data-service={f.auditValue}>{t.cta}</a>
+          </div>
+        ))}
+      </div>
+      <div class="ga-note">
+        <p><strong>One project, one invoice.</strong> Audit and corrections are a single package. Pricing depends on
+        property size, number of touchpoints, and content complexity. We give a firm quote before we start.
+        No surprises, no hidden fees, and you own the corrected materials.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.6 THE PROCESS -->
+  <section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <p class="label">The process</p>
+      <h2 style="margin-top:10px">Five steps. Nothing left to guesswork.</h2>
+      <ol class="ga-steps">
+        {ga.process.map((s, i) => (
+          <li>
+            <span class="ga-step-n">Step {i + 1}</span>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="ga-closer">That's it. One project, one invoice. <span style="color:var(--brass)">Your guests see and hear what you intend.</span></p>
+    </div>
+  </section>
+
+  <!-- 5.7 PARTNER PROGRAM -->
+  <section id="partners" class="ga-dark">
+    <div class="wrap">
+      <p class="label" style="color:var(--gold)">Partner Program · White label</p>
+      <h2 style="margin-top:10px;max-width:24ch">International Guest Language QA, under your name.</h2>
+      <p style="margin-top:16px;max-width:60ch;opacity:.9;font-size:1.08rem">
+        Add professional English QA to your client delivery without hiring editorial staff.
+        Human expert review, no AI shortcuts.
+      </p>
+      <div class="ga-partner">
+        <div>
+          <p class="label" style="color:var(--gold)">For printers and sign companies</p>
+          <ol class="ga-pflow">{partnerFlow.map(p => <li>{p}</li>)}</ol>
+          <p style="margin-top:18px;opacity:.9">You keep the relationship, we ensure the language quality.</p>
+        </div>
+        <div class="ga-partner-terms">
+          <ul class="ga-list ga-list-light">
+            <li>You charge your client for the service or bundle it into your price</li>
+            <li>You keep 25 to 35 percent for coordination and the client relationship</li>
+            <li>Per-job or volume-based monthly billing</li>
+            <li>No software required, email or WhatsApp works fine</li>
+          </ul>
+          <p style="margin-top:18px;opacity:.85;font-size:.95rem">The same model works for hotel suppliers, digital menu platforms, and design agencies.</p>
+        </div>
+      </div>
+      <p class="ga-partner-close">Every correction is human-verified. Your client's reputation is on the line. So is ours.</p>
+      <a class="btn" style="margin-top:22px" href={partnerHref} data-service={f.partnerValue}>Become a Partner</a>
+    </div>
+  </section>
+
+  <!-- 5.8 FAQ -->
+  <section id="faq">
+    <div class="wrap" style="max-width:820px">
+      <p class="label">FAQ</p>
+      <h2 style="margin-top:10px">Questions properties ask us.</h2>
+      <div class="ga-faq">
+        {ga.faqs.map((x, i) => (
+          <details open={i === 0}>
+            <summary>{x.q}</summary>
+            <p>{x.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.9 CROSS-SELL -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="card ga-cross">
+        <div>
+          <p class="label">Often pairs with Foundations services</p>
+          <p style="margin-top:10px;max-width:62ch;color:var(--muted)">
+            A full property audit frequently reveals opportunities in website optimization, Google Business Profile
+            and search visibility, and booking and inquiry management. Want to see how an audit could strengthen
+            your broader digital presence?
+          </p>
+        </div>
+        <a class="btn btn-ghost" href="/services/">Browse Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.10 FOOTER CTA + REQUEST FORM (all requests go through the form, no booking link) -->
+  <section class="ga-dark" style="text-align:center">
+    <div class="wrap">
+      <h2 style="max-width:22ch;margin-inline:auto">Ready to make sure your guests see and hear what you intend?</h2>
+      <div class="ga-ctas" style="justify-content:center">
+        <a class="btn" href={auditHref} data-service={f.auditValue}>Request an Audit</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="request">
+    <div class="wrap" style="max-width:680px">
+      <p class="label">Start here</p>
+      <h2 style="margin-top:10px">Tell us about your property.</h2>
+      <p style="margin-top:12px;color:var(--muted)">
+        Share your property name and what guests see today. We reply with next steps and a firm quote before any work starts.
+      </p>
+      <div class="ga-toggle" role="group" aria-label="Inquiry type">
+        <button type="button" data-service={f.auditValue} aria-pressed="true">Audit for my property</button>
+        <button type="button" data-service={f.partnerValue} aria-pressed="false">Partner Program</button>
+      </div>
+      <div class="card hs-card" style="margin-top:16px">
+        <div id="hubspot-audit-form"></div>
+      </div>
+      <p style="margin-top:24px;text-align:center;color:var(--muted)">
+        Prefer to talk? Call <a style="color:var(--brass);font-weight:700" href={`tel:${site.phoneRaw}`}>{site.phone}</a>
+        or email <a style="color:var(--brass);font-weight:700" href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+  </section>
+
+  <script charset="utf-8" type="text/javascript" src="//js-na2.hsforms.net/forms/embed/v2.js" is:inline></script>
+  <script is:inline define:vars={{ portalId: site.hubspotPortalId, formId: f.formId, field: f.serviceField, auditValue: f.auditValue, partnerValue: f.partnerValue }}>
+    (function () {
+      var target = document.getElementById('hubspot-audit-form');
+      var toggles = document.querySelectorAll('.ga-toggle button');
+      var params = new URLSearchParams(location.search);
+      var current = params.get(field) === partnerValue ? partnerValue : auditValue;
+
+      // HubSpot pre-fills hidden fields from the page's query string, so keep the URL in sync
+      // with the chosen inquiry type, then (re)build the form.
+      function setService(v) {
+        current = v;
+        window.fdnLeadName = v;
+        var p = new URLSearchParams(location.search);
+        p.set(field, v);
+        history.replaceState(null, '', location.pathname + '?' + p.toString() + location.hash);
+        toggles.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.service === v)); });
+        build();
+      }
+
+      function build() {
+        if (!(window.hbspt && window.hbspt.forms)) { setTimeout(build, 200); return; }
+        target.innerHTML = '';
+        window.hbspt.forms.create({ portalId: portalId, formId: formId, region: 'na2', target: '#hubspot-audit-form' });
+      }
+
+      toggles.forEach(function (b) {
+        b.addEventListener('click', function () { if (b.dataset.service !== current) setService(b.dataset.service); });
+      });
+
+      // CTAs on this page switch the form in place and scroll, instead of reloading.
+      document.querySelectorAll('a[data-service]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (a.dataset.service !== current) setService(a.dataset.service);
+          document.getElementById('request').scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      window.fdnLeadName = current;
+      toggles.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.service === current)); });
+      build();
+    })();
+  </script>
+
+  <style>
+    .ga-hero{background:var(--navy);color:var(--cream);padding:64px 0 72px}
+    .ga-hero-grid{display:grid;gap:44px;align-items:center}
+    @media(min-width:900px){.ga-hero-grid{grid-template-columns:1.2fr .8fr}}
+    .ga-hero-h2{margin-top:14px;font-family:var(--display);font-weight:800;font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.2;color:var(--gold)}
+    .ga-hero-sub{margin-top:18px;max-width:54ch;font-size:1.1rem;opacity:.9}
+    .ga-support{margin-top:18px;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+    .ga-ctas{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+    .ga-ghost-light{border-color:var(--gold);color:var(--gold)}
+    .ga-ghost-light:hover{background:var(--gold);color:var(--navy)}
+
+
+    .ga-cream{background:var(--cream)}
+    .ga-list{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:10px}
+    .ga-list li{padding-left:26px;position:relative}
+    .ga-list li::before{content:"✓";position:absolute;left:0;color:var(--brass);font-weight:800}
+    .ga-list-light li::before{color:var(--gold)}
+
+    .ga-issues{display:grid;gap:12px;margin-top:14px}
+    @media(min-width:760px){.ga-issues{grid-template-columns:repeat(2,1fr)}}
+    .ga-issue{padding:14px 16px;border-left:3px solid var(--brass);background:var(--cream);border-radius:0 8px 8px 0;color:var(--navy)}
+
+    .ga-accountability{display:grid;gap:32px;margin-top:44px;padding:32px;border:1px solid var(--line);border-radius:14px;align-items:center}
+    @media(min-width:900px){.ga-accountability{grid-template-columns:1.1fr .9fr}}
+    .ga-pipe{display:flex;flex-direction:column;gap:8px}
+    .ga-pipe-step{position:relative;padding:10px 14px;border:1px dashed var(--line);border-radius:8px;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#fff}
+    .ga-pipe-check{border:2px solid var(--gold);background:var(--navy);color:var(--gold)}
+    .ga-pipe-guest{border-style:solid;color:var(--navy)}
+
+    .ga-num{font-family:var(--display);font-weight:800;font-size:2rem;color:var(--gold);-webkit-text-stroke:1px var(--brass)}
+
+    .ga-dark{background:var(--navy);color:var(--cream)}
+    .ga-ba{display:grid;gap:14px;margin-top:14px;align-items:stretch}
+    @media(min-width:820px){.ga-ba{grid-template-columns:1fr auto 1fr auto 1fr;align-items:center}}
+    .ga-ba-card{border-radius:14px;padding:22px 24px;height:100%}
+    .ga-before{background:rgba(255,255,255,.04);border:1px dashed rgba(245,240,232,.3)}
+    .ga-after{background:var(--cream);color:var(--navy);border:2px solid var(--gold)}
+    .ga-ba-tag{font-family:var(--display);font-weight:800;font-size:1.2rem;color:var(--gold)}
+    .ga-after .ga-ba-tag{color:var(--navy)}
+    .ga-ba-read{margin-top:8px;font-size:.95rem;opacity:.85}
+    .ga-ba-arrow{font-size:2rem;color:var(--gold);text-align:center}
+    @media(max-width:819px){.ga-ba-arrow{transform:rotate(90deg)}}
+
+    .ga-price{position:relative;display:flex;flex-direction:column}
+    .ga-price.feat{border:2px solid var(--gold);box-shadow:0 20px 50px rgba(13,27,42,.12)}
+    .ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;white-space:nowrap}
+    .ga-bigprice{font-family:var(--display);font-weight:800;font-size:1.9rem;margin-top:10px;line-height:1.1;color:var(--navy)}
+    .ga-per{font-size:.88rem;color:var(--muted)}
+    .inclist{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+    .inclist li{padding-left:26px;position:relative;color:var(--muted);font-size:.92rem}
+    .inclist li::before{content:"✓";position:absolute;left:0;top:0;color:var(--brass);font-weight:800}
+    .ga-sizing{margin-top:18px;padding:14px;border-radius:10px;background:var(--cream)}
+    .ga-sizing-h{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin-bottom:6px}
+    .ga-sizing-row{display:flex;justify-content:space-between;gap:10px;font-size:.86rem;padding:5px 0;color:var(--navy)}
+    .ga-sizing-row span:last-child{font-weight:700;white-space:nowrap}
+    .ga-price-btn{margin-top:22px;text-align:center}
+    .ga-note{margin-top:32px;padding:22px 26px;border-radius:12px;background:#fff;border:1px solid var(--line);color:var(--muted)}
+    .ga-note strong{color:var(--navy)}
+
+    .ga-steps{list-style:none;display:grid;gap:24px;margin-top:40px}
+    @media(min-width:900px){.ga-steps{grid-template-columns:repeat(5,1fr);gap:18px}}
+    .ga-steps li{padding-top:16px;border-top:3px solid var(--gold)}
+    .ga-step-n{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
+    .ga-steps h3{font-size:1.08rem;margin-top:8px}
+    .ga-steps p{margin-top:8px;color:var(--muted);font-size:.92rem}
+    .ga-closer{margin-top:36px;text-align:center;font-family:var(--display);font-weight:800;font-size:1.2rem}
+
+    .ga-partner{display:grid;gap:36px;margin-top:36px}
+    @media(min-width:860px){.ga-partner{grid-template-columns:1fr 1fr}}
+    .ga-pflow{list-style:none;counter-reset:pf;margin-top:14px;display:flex;flex-direction:column;gap:10px}
+    .ga-pflow li{counter-increment:pf;position:relative;padding:12px 14px 12px 50px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(212,168,85,.2)}
+    .ga-pflow li::before{content:counter(pf);position:absolute;left:14px;top:10px;width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:800;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+    .ga-partner-terms{padding:24px;border-radius:14px;border:1px solid rgba(212,168,85,.3)}
+    .ga-partner-close{margin-top:36px;font-family:var(--display);font-weight:800;font-size:1.2rem;color:var(--gold)}
+
+    .ga-faq{margin-top:28px;border-top:1px solid var(--line)}
+    .ga-faq details{border-bottom:1px solid var(--line)}
+    .ga-faq summary{cursor:pointer;list-style:none;padding:18px 36px 18px 0;position:relative;font-weight:700;color:var(--navy);font-size:1.05rem}
+    .ga-faq summary::-webkit-details-marker{display:none}
+    .ga-faq summary::after{content:"+";position:absolute;right:4px;top:14px;font-size:1.5rem;color:var(--brass);font-weight:500}
+    .ga-faq details[open] summary::after{content:"−"}
+    .ga-faq details p{padding:0 0 20px;color:var(--muted);max-width:68ch}
+
+    .ga-cross{display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+
+    .ga-toggle{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap}
+    .ga-toggle button{font-family:var(--body);font-size:.92rem;font-weight:700;padding:10px 16px;border-radius:8px;border:1.5px solid var(--line);background:#fff;color:var(--navy);cursor:pointer}
+    .ga-toggle button[aria-pressed="true"]{border-color:var(--gold);background:var(--navy);color:var(--gold)}
+  </style>
+</Base>

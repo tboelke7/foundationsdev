@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
-import { services } from '../../siteConfig.js';
+import { services, guestAudit } from '../../siteConfig.js';
 ---
 <Base title="Services" description="Web presence, Google Business Profile, lead generation, automation, reviews, and reputation management for Tampa Bay contractors." path="/services/">
   <section>
@@ -18,12 +18,25 @@ import { services } from '../../siteConfig.js';
             <p style="margin-top:14px" class="label">Learn more →</p>
           </a>
         ))}
+        <a class="card svc svc-audit" href={guestAudit.path}>
+          <span class="ico"><Icon name="globe" /></span>
+          <div>
+            <p class="label">Hospitality · Sri Lanka<span class="pill">New</span></p>
+            <h3 style="font-size:1.2rem;margin-top:8px">{guestAudit.title}</h3>
+            <p style="margin-top:10px;opacity:.85">For hotels, restaurants, guesthouses, and attractions in Sri Lanka. We audit everything your guests see and read, and deliver corrected, guest-ready copy. One project, one invoice.</p>
+            <p style="margin-top:14px;color:var(--gold)" class="label">Learn more →</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
   <style>
     .svc .ico{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:10px;background:var(--cream);color:var(--brass)}
     .svc:hover .ico{background:var(--gold);color:var(--navy)}
+    .svc-audit{grid-column:1/-1;background:var(--navy);color:var(--cream);border-color:var(--navy);display:flex;gap:22px;align-items:flex-start}
+    .svc-audit .label{color:var(--gold)}
+    .svc-audit .ico{flex-shrink:0;background:rgba(212,168,85,.14);color:var(--gold)}
+    .svc-audit:hover .ico{background:var(--gold);color:var(--navy)}
     .pill{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);border:1px solid var(--gold);border-radius:20px;padding:2px 8px;vertical-align:middle}
   </style>
 </Base>

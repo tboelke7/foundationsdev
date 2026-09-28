@@ -1,7 +1,7 @@
 ---
-import { site } from '../siteConfig.js';
+import { site, guestAudit, guestAuditHref } from '../siteConfig.js';
 import Header from '../components/Header.astro';
-const { title, description, path = "" } = Astro.props;
+const { title, description, path = "", extraSchema = [], leadName = "Web Presence Report Card" } = Astro.props;
 const canonical = site.url + path;
 const fullTitle = title ? `${title} | ${site.shortName}` : `${site.name} — ${site.tagline}`;
 const desc = description || "Owned, fast, conversion-built web presence for Tampa Bay trades and home-service contractors.";
@@ -37,6 +37,7 @@ const schema = {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet" />
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  {extraSchema.map(s => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   <!-- ============ HUBSPOT TRACKING PIXEL SLOT ============ -->
  <!-- Meta Pixel Code -->
 <script is:inline>
@@ -74,12 +75,12 @@ src="https://www.facebook.com/tr?id=36583469651298854&ev=PageView&noscript=1"
 </script>
 <!-- End Google tag -->
 <!-- HubSpot form submit → Meta Lead event -->
-<script is:inline>
+<script is:inline define:vars={{ leadName }}>
 window.addEventListener('message', function(event) {
   if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormSubmitted') {
     if (window.fbq) {
       fbq('track', 'Lead', {
-        content_name: 'Web Presence Report Card'
+        content_name: window.fdnLeadName || leadName
       });
     }
   }
@@ -143,15 +144,17 @@ window.addEventListener('message', function(event) {
       <div class="foot-brand">
         <img src="/images/logo-header.webp" alt="Foundations" class="foot-logo" />
         <p class="foot-tag">{site.tagline}</p>
-        <p class="foot-blurb">Owned, fast, conversion-built web presence for Tampa Bay trades and home-service contractors. You own everything we build — no markup, no hostage fees.</p>
+        <p class="foot-blurb">International Guest Experience Audits for hospitality in Sri Lanka, plus owned, fast web presence for Tampa Bay trades. Human-verified, one project, one invoice.</p>
         <div class="foot-badges">
-          <span class="foot-badge">You own 100%</span>
-          <span class="foot-badge">No ad markup</span>
-          <span class="foot-badge">Tampa Bay</span>
+          <span class="foot-badge">Human-verified</span>
+          <span class="foot-badge">Sri Lanka hospitality</span>
+          <span class="foot-badge">Tampa Bay trades</span>
         </div>
       </div>
       <div class="foot-col">
         <p class="foot-h">Services</p>
+        <a href="/international-guest-audit/">Guest Experience Audit</a>
+        <a href="/international-guest-audit/#partners">Audit Partner Program</a>
         <a href="/services/web-presence-builds/">Web Presence Builds</a>
         <a href="/services/google-business-profile/">Google Business Profile</a>
         <a href="/services/local-seo/">Local SEO</a>
@@ -171,7 +174,7 @@ window.addEventListener('message', function(event) {
         <a href={`tel:${site.phoneRaw}`}>{site.phone}</a>
         <a href={`mailto:${site.email}`}>{site.email}</a>
         <p class="foot-areas">{site.serviceAreas.join(" · ")}</p>
-        <a class="btn navcta" style="margin-top:14px" href="/contact/">Get Started →</a>
+        <a class="btn navcta" style="margin-top:14px" href={guestAuditHref(guestAudit.form.auditValue)}>Request an Audit →</a>
       </div>
     </div>
     <div class="wrap foot-base">© {new Date().getFullYear()} Foundations Business Development · {site.tagline}</div>

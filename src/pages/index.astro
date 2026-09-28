@@ -1,36 +1,36 @@
 ---
 import Base from '../layouts/BaseLayout.astro';
-import Icon from '../components/Icon.astro';
-import { site, services, steps, problems } from '../siteConfig.js';
-const compare = [
-  { point:"You own the site, domain & code", us:true, them:false },
-  { point:"No markup on your ad spend", us:true, them:false },
-  { point:"No monthly platform hostage fees", us:true, them:false },
-  { point:"Built to load in under a second", us:true, them:false },
-  { point:"Free Web Presence Report Card", us:true, them:false },
+import TouchpointPanel from '../components/TouchpointPanel.astro';
+import { services, guestAudit as ga, guestAuditHref } from '../siteConfig.js';
+
+const auditHref = guestAuditHref(ga.form.auditValue);
+const issues = [
+  "Awkward phrasing that reads like direct translation",
+  "Mistranslations that keep the words but lose the meaning",
+  "Inconsistent tone across touchpoints",
+  "Copy that confuses rather than welcomes",
 ];
+const description = "International Guest Experience Audit for hotels, restaurants, and guesthouses in Sri Lanka. We audit the English your guests see and read and deliver corrected, guest-ready copy. One project, one invoice.";
 ---
-<Base path="/">
-  <!-- HERO -->
-  <section style="background:var(--navy);color:var(--cream);padding-bottom:48px">
+<Base path="/" description={description}>
+  <!-- HERO: the guest experience audit is the lead offer -->
+  <section style="background:var(--navy);color:var(--cream);padding:64px 0 72px">
     <div class="wrap hero">
       <div class="hero-copy">
-        <p class="label">Web presence for Tampa Bay trades</p>
-        <h1 style="margin-top:14px">Build like an A.<br/>Show up online like one.</h1>
-        <p style="margin-top:20px;max-width:46ch;font-size:1.12rem;opacity:.9">
-          You do great work. But if your website is slow, thin, or stuck on a platform you don't own,
-          homeowners never see it. We build the web presence your reputation already earned — and you
-          own every piece of it.
+        <p class="label" style="color:var(--gold)">International Guest Experience Audit · Sri Lanka</p>
+        <h1 style="margin-top:14px">Make sure your guests see and hear what you intend.</h1>
+        <p style="margin-top:20px;max-width:52ch;font-size:1.12rem;opacity:.9">
+          We audit your guest-facing English, your website, menus, signage, policies, and materials,
+          and make sure it communicates clearly, naturally, and at the quality level of your brand.
         </p>
-        <div style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap">
-          <a class="btn" href="/contact/">Get your free Report Card</a>
-          <a class="btn btn-ghost" style="border-color:var(--gold);color:var(--gold)" href="/pricing/">See pricing</a>
+        <p class="support">Human expert. Bilingual verification. Zero guessing.</p>
+        <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap">
+          <a class="btn" href={auditHref}>Request an Audit</a>
+          <a class="btn btn-ghost" style="border-color:var(--gold);color:var(--gold)" href={ga.path}>See how it works</a>
         </div>
-        <p style="margin-top:26px;opacity:.7;font-size:.95rem">Trusted by Tampa Bay trades & home-service contractors.</p>
+        <p style="margin-top:22px;opacity:.7;font-size:.95rem">For hotels, resorts, restaurants, guesthouses, and attractions in Sri Lanka.</p>
       </div>
-      <div class="hero-img">
-        <img src="/images/hero.webp" width="853" height="476" alt="A fast, modern contractor website shown on a laptop and phone, built by Foundations" loading="eager" />
-      </div>
+      <TouchpointPanel />
     </div>
   </section>
 
@@ -39,114 +39,145 @@ const compare = [
     <div class="wrap">
       <div class="statrow">
         <div class="stat">
-          <span class="statnum">8</span>
-          <span class="statlbl">Dimensions we grade<br/>on your Report Card</span>
+          <span class="statnum">1</span>
+          <span class="statlbl">Project, one invoice.<br/>Audit and corrections together</span>
         </div>
         <div class="stat">
           <span class="statnum">100<span class="pct">%</span></span>
-          <span class="statlbl">Ownership — the site<br/>and assets are yours</span>
+          <span class="statlbl">Of corrections verified<br/>by a human expert</span>
         </div>
         <div class="stat">
-          <span class="statnum">0<span class="pct">%</span></span>
-          <span class="statlbl">Markup on your<br/>ad spend, ever</span>
+          <span class="statnum">5–7</span>
+          <span class="statlbl">Business days for a<br/>Quick Guest Language Review</span>
         </div>
         <div class="stat">
-          <span class="statnum">&lt;1<span class="pct">s</span></span>
-          <span class="statlbl">Page load — fast<br/>enough to rank</span>
+          <span class="statnum">0</span>
+          <span class="statlbl">Hidden fees. Firm quote<br/>before we start</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- THE CHALLENGE -->
+  <section>
+    <div class="wrap challenge">
+      <div>
+        <p class="label">The challenge</p>
+        <h2 style="margin-top:10px">These aren't grammar problems. They're accountability problems.</h2>
+        <p style="margin-top:16px;color:var(--muted)">
+          Your international guests encounter English across every touchpoint. Content moves from concept to
+          translation to design to print without anyone owning the final checkpoint. No one verifies that the
+          meaning is actually right, not just grammatically acceptable.
+        </p>
+        <p style="margin-top:14px;color:var(--muted)">
+          The cheapest moment to catch this is before your guests see it printed or published.
+          That's where we come in. <strong style="color:var(--navy)">We own the checkpoint.</strong>
+        </p>
+      </div>
+      <div class="issues">
+        {issues.map(i => <p class="issue">{i}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <p class="label">How we work</p>
+      <h2 style="margin-top:10px">Three capabilities, one accountable checkpoint.</h2>
+      <div class="grid g3" style="margin-top:36px">
+        {ga.capabilities.map((c, i) => (
+          <div>
+            <span class="stepn">{String(i + 1).padStart(2, "0")}</span>
+            <h3 style="font-size:1.2rem;margin-top:12px">{c.title}</h3>
+            <p style="margin-top:10px;color:var(--muted)">{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES AND PRICING (summary; full detail on the audit page) -->
   <section>
     <div class="wrap">
-      <p class="label">What we do</p>
-      <h2 style="margin-top:10px">Everything to get found, and chosen.</h2>
-      <div class="grid g3" style="margin-top:36px">
-        {services.map(s => (
-          <a class="card svc" href={`/services/${s.slug}/`}>
-            <span class="ico"><Icon name={s.icon} /></span>
-            <h3 style="font-size:1.12rem;margin-top:14px">{s.title}{s.addon && <span class="pill">Add-on</span>}</h3>
-            <p style="margin-top:10px;color:var(--muted)">{s.blurb}</p>
-            <p style="margin-top:14px" class="label">Learn more →</p>
+      <p class="label">Services and pricing</p>
+      <h2 style="margin-top:10px">Pick the scope that fits your property.</h2>
+      <div class="grid g3" style="margin-top:36px;align-items:stretch">
+        {ga.tiers.map(t => (
+          <a class={"card tier" + (t.featured ? " feat" : "")} href={`${ga.path}#pricing`}>
+            <p class="label">{t.name}</p>
+            <p class="tier-price">{t.price}</p>
+            <p class="tier-per">{t.per}</p>
+            <p style="margin-top:12px;color:var(--muted);font-size:.94rem;flex:1">{t.fit}</p>
+            <p class="label" style="margin-top:16px">See what's included →</p>
           </a>
         ))}
       </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-    <div class="wrap">
-      <p class="label">How it works</p>
-      <h2 style="margin-top:10px">Three steps to a foundation that compounds.</h2>
-      <div class="grid g3" style="margin-top:40px">
-        {steps.map(st => (
-          <div>
-            <span class="stepn">{st.n}</span>
-            <h3 style="font-size:1.2rem;margin-top:12px">{st.title}</h3>
-            <p style="margin-top:10px;color:var(--muted)">{st.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPARISON -->
-  <section>
-    <div class="wrap" style="max-width:760px">
-      <p class="label" style="text-align:center">The difference</p>
-      <h2 style="margin-top:10px;text-align:center;max-width:22ch;margin-inline:auto">Most agencies rent you a presence. We hand you one.</h2>
-      <div class="comp" style="margin-top:36px">
-        <div class="comp-head">
-          <span></span>
-          <span class="comp-us">Foundations</span>
-          <span class="comp-them">Most agencies</span>
-        </div>
-        {compare.map(c => (
-          <div class="comp-row">
-            <span>{c.point}</span>
-            <span class="comp-us">{c.us ? "✓" : "—"}</span>
-            <span class="comp-them">{c.them ? "✓" : "—"}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-
-  <!-- PROBLEM -> FIX -->
-  <section style="background:var(--cream)">
-    <div class="wrap">
-      <p class="label">Sound familiar?</p>
-      <h2 style="margin-top:10px">The problems we hear — and how we fix them.</h2>
-      <div class="grid g3" style="margin-top:36px">
-        {problems.map(pr => (
-          <div class="card prob">
-            <p class="prob-pain">&ldquo;{pr.pain}&rdquo;</p>
-            <p class="prob-fix"><span class="prob-fix-lbl">How we fix it:</span> {pr.fix}</p>
-          </div>
-        ))}
-      </div>
-      <p style="text-align:center;margin-top:30px;font-size:1.2rem;font-family:var(--display);font-weight:800">
-        Marketing should grow your business — <span style="color:var(--brass)">not your stress level.</span>
+      <p style="margin-top:24px;text-align:center;color:var(--muted)">
+        <strong style="color:var(--navy)">One project, one invoice.</strong> We give a firm quote before we start, and you own the corrected materials.
       </p>
+    </div>
+  </section>
+
+  <!-- PARTNER PROGRAM -->
+  <section style="background:var(--navy);color:var(--cream)">
+    <div class="wrap partner">
+      <div>
+        <p class="label" style="color:var(--gold)">Partner Program · White label</p>
+        <h2 style="margin-top:10px">For printers, sign companies, and hotel suppliers.</h2>
+        <p style="margin-top:16px;max-width:56ch;opacity:.9">
+          Add professional English QA to your client delivery without hiring editorial staff.
+          You keep the relationship, we ensure the language quality.
+        </p>
+      </div>
+      <div class="partner-side">
+        <ul class="ticks">
+          <li>You keep 25 to 35 percent for coordination and the client relationship</li>
+          <li>Per-job or volume-based monthly billing</li>
+          <li>No software required, email or WhatsApp works fine</li>
+        </ul>
+        <a class="btn" style="margin-top:22px" href={`${ga.path}#partners`}>Explore Our Partner Program</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTRACTOR WEB PRESENCE (secondary line of business) -->
+  <section style="background:#fff;border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <p class="label">Also from Foundations</p>
+      <h2 style="margin-top:10px">Web presence for Tampa Bay trades.</h2>
+      <p style="margin-top:12px;max-width:60ch;color:var(--muted)">
+        Fast, owned websites, Google Business Profile, local SEO, and lead follow-up for home-service contractors.
+        You own everything we build.
+      </p>
+      <div class="svc-mini">
+        {services.map(s => (
+          <a href={`/services/${s.slug}/`}>
+            <span class="svc-mini-t">{s.title}</span>
+            <span class="svc-mini-d">{s.tease}</span>
+          </a>
+        ))}
+      </div>
+      <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-ghost" href="/services/">Browse Our Services</a>
+        <a class="btn btn-ghost" href="/contact/">Get a free Report Card</a>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section style="background:var(--navy);color:var(--cream);text-align:center">
     <div class="wrap">
-      <h2 style="max-width:18ch;margin-inline:auto">See exactly where your web presence stands.</h2>
-      <p style="margin-top:16px;opacity:.9;max-width:46ch;margin-inline:auto">
-        We grade it A–F across 8 dimensions — free, no obligation. Most contractors are shocked.
-      </p>
-      <a class="btn" style="margin-top:28px" href="/contact/">Get your free Report Card</a>
+      <h2 style="max-width:22ch;margin-inline:auto">Ready to make sure your guests see and hear what you intend?</h2>
+      <a class="btn" style="margin-top:28px" href={auditHref}>Request an Audit</a>
     </div>
   </section>
 
   <style>
+    .hero{display:grid;gap:44px;align-items:center}
+    @media(min-width:900px){.hero{grid-template-columns:1.2fr .8fr}}
+    .support{margin-top:18px;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+
     .stats{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .statrow{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
     @media(min-width:760px){.statrow{grid-template-columns:repeat(4,1fr)}}
@@ -157,25 +188,33 @@ const compare = [
     .statnum{display:block;font-family:var(--display);font-weight:800;font-size:2.8rem;line-height:1;color:var(--navy);letter-spacing:-.02em}
     .statnum .pct{color:var(--brass);font-size:1.6rem;vertical-align:super}
     .statlbl{display:block;margin-top:12px;font-size:.82rem;color:var(--muted);line-height:1.45}
-    .hero{display:grid;gap:40px;align-items:center;padding-top:24px}
-    @media(min-width:880px){.hero{grid-template-columns:1.05fr .95fr}}
-    .hero-img img{width:100%;height:auto;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
-    
-    .svc .ico{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:10px;background:var(--cream);color:var(--brass)}
-    .svc:hover .ico{background:var(--gold);color:var(--navy)}
-    .pill{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);border:1px solid var(--gold);border-radius:20px;padding:2px 8px;vertical-align:middle}
+
+    .challenge{display:grid;gap:36px;align-items:center}
+    @media(min-width:900px){.challenge{grid-template-columns:1.1fr .9fr}}
+    .issues{display:flex;flex-direction:column;gap:12px}
+    .issue{padding:14px 16px;border-left:3px solid var(--brass);background:#fff;border-radius:0 8px 8px 0;color:var(--navy)}
+
     .stepn{font-family:var(--display);font-weight:800;font-size:2.4rem;color:var(--gold);-webkit-text-stroke:1px var(--brass)}
-    .comp{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
-    .comp-head,.comp-row{display:grid;grid-template-columns:1fr 130px 130px;align-items:center}
-    .comp-head{background:var(--navy);color:var(--cream);padding:14px 20px;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}
-    .comp-row{padding:16px 20px;border-top:1px solid var(--line)}
-    .comp-us{text-align:center;color:var(--brass);font-weight:800}
-    .comp-them{text-align:center;color:var(--muted)}
-    .comp-head .comp-us{color:var(--gold)} .comp-head .comp-them{color:var(--cream);opacity:.7}
-    @media(max-width:620px){.comp-head,.comp-row{grid-template-columns:1fr 64px 64px}}
-    .prob{display:flex;flex-direction:column}
-    .prob-pain{font-family:var(--display);font-weight:800;font-size:1.05rem;font-style:italic;color:var(--navy);line-height:1.3}
-    .prob-fix{margin-top:14px;color:var(--muted);font-size:.92rem;padding-top:14px;border-top:1px solid var(--line)}
-    .prob-fix-lbl{color:var(--brass);font-weight:700}
+
+    .tier{display:flex;flex-direction:column;transition:.2s}
+    .tier:hover{border-color:var(--gold)}
+    .tier.feat{border:2px solid var(--gold);box-shadow:0 20px 50px rgba(13,27,42,.12)}
+    .tier-price{font-family:var(--display);font-weight:800;font-size:1.8rem;margin-top:10px;line-height:1.1;color:var(--navy)}
+    .tier-per{font-size:.88rem;color:var(--muted)}
+
+    .partner{display:grid;gap:36px;align-items:center}
+    @media(min-width:900px){.partner{grid-template-columns:1.1fr .9fr}}
+    .partner-side{padding:26px;border-radius:14px;border:1px solid rgba(212,168,85,.3)}
+    .ticks{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .ticks li{padding-left:26px;position:relative}
+    .ticks li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
+
+    .svc-mini{display:grid;gap:0 28px;margin-top:28px;border-top:1px solid var(--line)}
+    @media(min-width:760px){.svc-mini{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1000px){.svc-mini{grid-template-columns:repeat(4,1fr)}}
+    .svc-mini a{display:flex;flex-direction:column;padding:14px 0;border-bottom:1px solid var(--line)}
+    .svc-mini-t{font-weight:700;color:var(--navy)}
+    .svc-mini a:hover .svc-mini-t{color:var(--brass)}
+    .svc-mini-d{font-size:.84rem;color:var(--muted)}
   </style>
 </Base>
