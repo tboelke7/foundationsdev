@@ -15,7 +15,7 @@ const issues = [
   "Inconsistent tone across touchpoints",
   "Copy that confuses rather than welcomes",
 ];
-const pipeline = ["Concept", "Translation", "Design", "Print"];
+const pipeline = ["Concept", "Translation", "Design"];
 const partnerFlow = [
   "Your client sends artwork for approval.",
   "You forward it to Foundations for language QA.",
@@ -47,6 +47,9 @@ const extraSchema = [
 <Base title={ga.title} description={description} path={ga.path} extraSchema={extraSchema} leadName={f.auditValue}>
 
   <!-- 5.1 HERO -->
+  <!-- Background photo: drop a Sri Lankan resort/hospitality photo (WebP, ~250KB max, no visible
+       hotel brand names) at public/images/audit-hero.webp and it appears automatically.
+       Until that file exists the hero simply renders solid navy, nothing breaks. -->
   <section class="ga-hero">
     <div class="wrap ga-hero-grid">
       <div>
@@ -100,9 +103,10 @@ const extraSchema = [
             That's where we come in. <strong style="color:var(--navy)">We own the checkpoint.</strong>
           </p>
         </div>
-        <div class="ga-pipe" aria-label="Concept, Translation, Design, Print, then the Foundations checkpoint before guests see it">
+        <div class="ga-pipe" aria-label="Concept, Translation, Design, then the Foundations checkpoint before anything is printed and reaches your guests">
           {pipeline.map(p => <span class="ga-pipe-step">{p}</span>)}
           <span class="ga-pipe-step ga-pipe-check">Foundations checkpoint</span>
+          <span class="ga-pipe-step">Print</span>
           <span class="ga-pipe-step ga-pipe-guest">Your guests</span>
         </div>
       </div>
@@ -345,12 +349,16 @@ const extraSchema = [
   </script>
 
   <style>
-    .ga-hero{background:var(--navy);color:var(--cream);padding:64px 0 72px}
+    .ga-hero{position:relative;background:var(--navy);color:var(--cream);padding:64px 0 72px;overflow:hidden}
+    .ga-hero::before{content:"";position:absolute;inset:0;background:url('/images/audit-hero.webp') right center/cover no-repeat}
+    .ga-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(13,27,42,.95) 42%,rgba(13,27,42,.72) 72%,rgba(13,27,42,.42) 100%)}
+    .ga-hero .wrap{position:relative;z-index:1}
+    @media(max-width:899px){.ga-hero::after{background:rgba(13,27,42,.9)}}
     .ga-hero-grid{display:grid;gap:44px;align-items:center}
     @media(min-width:900px){.ga-hero-grid{grid-template-columns:1.2fr .8fr}}
     .ga-hero-h2{margin-top:14px;font-family:var(--display);font-weight:800;font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.2;color:var(--gold)}
     .ga-hero-sub{margin-top:18px;max-width:54ch;font-size:1.1rem;opacity:.9}
-    .ga-support{margin-top:18px;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+    .ga-support{margin-top:18px;font-family:var(--mono);font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
     .ga-ctas{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
     .ga-ghost-light{border-color:var(--gold);color:var(--gold)}
     .ga-ghost-light:hover{background:var(--gold);color:var(--navy)}
@@ -369,7 +377,7 @@ const extraSchema = [
     .ga-accountability{display:grid;gap:32px;margin-top:44px;padding:32px;border:1px solid var(--line);border-radius:14px;align-items:center}
     @media(min-width:900px){.ga-accountability{grid-template-columns:1.1fr .9fr}}
     .ga-pipe{display:flex;flex-direction:column;gap:8px}
-    .ga-pipe-step{position:relative;padding:10px 14px;border:1px dashed var(--line);border-radius:8px;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#fff}
+    .ga-pipe-step{position:relative;padding:10px 14px;border:1px dashed var(--line);border-radius:8px;font-family:var(--mono);font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#fff}
     .ga-pipe-check{border:2px solid var(--gold);background:var(--navy);color:var(--gold)}
     .ga-pipe-guest{border-style:solid;color:var(--navy)}
 
@@ -389,14 +397,14 @@ const extraSchema = [
 
     .ga-price{position:relative;display:flex;flex-direction:column}
     .ga-price.feat{border:2px solid var(--gold);box-shadow:0 20px 50px rgba(13,27,42,.12)}
-    .ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;white-space:nowrap}
+    .ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;white-space:nowrap}
     .ga-bigprice{font-family:var(--display);font-weight:800;font-size:1.9rem;margin-top:10px;line-height:1.1;color:var(--navy)}
     .ga-per{font-size:.88rem;color:var(--muted)}
     .inclist{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:8px}
     .inclist li{padding-left:26px;position:relative;color:var(--muted);font-size:.92rem}
     .inclist li::before{content:"✓";position:absolute;left:0;top:0;color:var(--brass);font-weight:800}
     .ga-sizing{margin-top:18px;padding:14px;border-radius:10px;background:var(--cream)}
-    .ga-sizing-h{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin-bottom:6px}
+    .ga-sizing-h{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin-bottom:6px}
     .ga-sizing-row{display:flex;justify-content:space-between;gap:10px;font-size:.86rem;padding:5px 0;color:var(--navy)}
     .ga-sizing-row span:last-child{font-weight:700;white-space:nowrap}
     .ga-price-btn{margin-top:22px;text-align:center}
@@ -406,7 +414,7 @@ const extraSchema = [
     .ga-steps{list-style:none;display:grid;gap:24px;margin-top:40px}
     @media(min-width:900px){.ga-steps{grid-template-columns:repeat(5,1fr);gap:18px}}
     .ga-steps li{padding-top:16px;border-top:3px solid var(--gold)}
-    .ga-step-n{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
+    .ga-step-n{font-family:var(--mono);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
     .ga-steps h3{font-size:1.08rem;margin-top:8px}
     .ga-steps p{margin-top:8px;color:var(--muted);font-size:.92rem}
     .ga-closer{margin-top:36px;text-align:center;font-family:var(--display);font-weight:800;font-size:1.2rem}

@@ -13,12 +13,47 @@ const issues = [
 const description = "International Guest Experience Audit for hotels, restaurants, and guesthouses in Sri Lanka. We audit the English your guests see and read and deliver corrected, guest-ready copy. One project, one invoice.";
 ---
 <Base path="/" description={description}>
+  <!-- BRAND HERO: who Foundations is, before any single offer -->
+  <section class="brand-hero">
+    <div class="wrap brand-grid">
+      <div>
+        <p class="label" style="color:var(--gold)">Foundations Business Development</p>
+        <h1 style="margin-top:16px">Build the base.<br/>Build the business.</h1>
+        <p style="margin-top:20px;max-width:52ch;font-size:1.12rem;opacity:.9">
+          We build the foundations businesses grow on: guest experience language audits for Sri Lankan
+          hospitality, and owned websites, lead systems, and marketing infrastructure for U.S. trades.
+          You own every account, asset, and login. We set it up; it stays yours.
+        </p>
+        <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap">
+          <a class="btn" href="#audit">Guest Experience Audits</a>
+          <a class="btn btn-ghost" style="border-color:var(--gold);color:var(--gold)" href="/services/">Web Presence for Trades</a>
+        </div>
+      </div>
+      <div class="brand-visual" aria-hidden="true">
+        <div class="bv-site">
+          <span class="bv-dot"></span><span class="bv-dot"></span><span class="bv-dot"></span>
+          <div class="bv-bar"></div>
+          <div class="bv-line w1"></div>
+          <div class="bv-line w2"></div>
+          <div class="bv-cta"></div>
+        </div>
+        <span class="bv-chip c1">Guest Language QA</span>
+        <span class="bv-chip c2">Speed-to-Lead</span>
+        <span class="bv-chip c3">Google Business Profile</span>
+        <span class="bv-chip c4">Reviews & Reputation</span>
+      </div>
+    </div>
+    <div class="wrap trust-strip">
+      <span>Client-owned assets</span><span>No contracts</span><span>No ad-spend markup</span><span>Human-verified work</span>
+    </div>
+  </section>
+
   <!-- HERO: the guest experience audit is the lead offer -->
-  <section style="background:var(--navy);color:var(--cream);padding:64px 0 72px">
+  <section id="audit" style="background:var(--navy);color:var(--cream);padding:64px 0 72px;border-top:3px solid var(--gold)">
     <div class="wrap hero">
       <div class="hero-copy">
         <p class="label" style="color:var(--gold)">International Guest Experience Audit · Sri Lanka</p>
-        <h1 style="margin-top:14px">Make sure your guests see and hear what you intend.</h1>
+        <h2 style="margin-top:14px;font-size:clamp(1.9rem,4.2vw,3rem)">Make sure your guests see and hear what you intend.</h2>
         <p style="margin-top:20px;max-width:52ch;font-size:1.12rem;opacity:.9">
           We audit your guest-facing English, your website, menus, signage, policies, and materials,
           and make sure it communicates clearly, naturally, and at the quality level of your brand.
@@ -174,9 +209,29 @@ const description = "International Guest Experience Audit for hotels, restaurant
   </section>
 
   <style>
+    .brand-hero{background:linear-gradient(180deg,var(--navy) 0%,#122438 100%);color:var(--cream);padding:88px 0 0}
+    .brand-grid{display:grid;gap:52px;align-items:center;padding-bottom:64px}
+    @media(min-width:940px){.brand-grid{grid-template-columns:1.15fr .85fr}}
+    .brand-visual{position:relative;min-height:280px;display:none}
+    @media(min-width:940px){.brand-visual{display:block}}
+    .bv-site{position:absolute;inset:12% 8% 18% 4%;background:rgba(245,240,232,.06);border:1px solid rgba(212,168,85,.35);border-radius:14px;padding:18px}
+    .bv-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:rgba(212,168,85,.5);margin-right:6px}
+    .bv-bar{margin-top:16px;height:30px;width:62%;border-radius:6px;background:rgba(212,168,85,.85)}
+    .bv-line{height:12px;border-radius:6px;background:rgba(245,240,232,.22);margin-top:12px}
+    .bv-line.w1{width:84%}
+    .bv-line.w2{width:70%}
+    .bv-cta{margin-top:18px;height:34px;width:38%;border-radius:8px;background:var(--gold)}
+    .bv-chip{position:absolute;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;background:var(--navy);border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:8px 14px;white-space:nowrap;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+    .bv-chip.c1{top:2%;right:0}
+    .bv-chip.c2{top:34%;right:-2%}
+    .bv-chip.c3{bottom:24%;left:-2%}
+    .bv-chip.c4{bottom:4%;right:12%}
+    .trust-strip{display:flex;gap:14px 34px;flex-wrap:wrap;justify-content:center;padding-top:20px;padding-bottom:20px;border-top:1px solid rgba(212,168,85,.25)}
+    .trust-strip span{font-family:var(--mono);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);opacity:.85}
+
     .hero{display:grid;gap:44px;align-items:center}
     @media(min-width:900px){.hero{grid-template-columns:1.2fr .8fr}}
-    .support{margin-top:18px;font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+    .support{margin-top:18px;font-family:var(--mono);font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
 
     .stats{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .statrow{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
@@ -187,7 +242,7 @@ const description = "International Guest Experience Audit for hotels, restaurant
     @media(min-width:760px){.stat:nth-child(2n){border-right:1px solid var(--line)}}
     .statnum{display:block;font-family:var(--display);font-weight:800;font-size:2.8rem;line-height:1;color:var(--navy);letter-spacing:-.02em}
     .statnum .pct{color:var(--brass);font-size:1.6rem;vertical-align:super}
-    .statlbl{display:block;margin-top:12px;font-size:.82rem;color:var(--muted);line-height:1.45}
+    .statlbl{display:block;margin-top:12px;font-size:.9rem;color:var(--muted);line-height:1.45}
 
     .challenge{display:grid;gap:36px;align-items:center}
     @media(min-width:900px){.challenge{grid-template-columns:1.1fr .9fr}}
