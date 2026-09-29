@@ -46,11 +46,19 @@ import { site, services, menuGroups, monthlyPlans, buildTiers, guestAudit, guest
         <div class="mega mega-narrow">
           <div class="plans-drop">
             <a class="plans-all" href="/pricing/">
-              <span class="mega-head">All plans</span>
-              <span class="plans-all-h">See builds + monthly →</span>
+              <span class="mega-head">All pricing</span>
+              <span class="plans-all-h">Audit tiers, builds, and monthly plans →</span>
             </a>
+            <p class="plans-group">Guest Experience Audit · Sri Lanka</p>
+            {guestAudit.tiers.map(t => (
+              <a class="plan-row" href="/pricing/#guest-audit">
+                <span class="plan-name">{t.name}</span>
+                <span class="plan-price">{t.price}<span class="plan-per"> {t.per}</span></span>
+              </a>
+            ))}
+            <p class="plans-group">Trades web presence · Tampa Bay</p>
             {monthlyPlans.map(p => (
-              <a class="plan-row" href="/pricing/">
+              <a class="plan-row" href="/pricing/#trades">
                 <span class="plan-name">{p.name}{p.featured && <span class="pill">Popular</span>}</span>
                 <span class="plan-price">{p.price}<span class="plan-per">{p.per}</span></span>
                 <span class="plan-tag">{p.tagline}</span>
@@ -108,7 +116,8 @@ import { site, services, menuGroups, monthlyPlans, buildTiers, guestAudit, guest
   .mega-feature-row{display:flex;flex-direction:column}
   .mega-feature-go{color:var(--brass);font-weight:700;font-size:.88rem;white-space:nowrap}
   /* PLANS DROP */
-  .plans-drop{display:flex;flex-direction:column;gap:2px}
+  .plans-drop{display:flex;flex-direction:column;gap:2px;min-width:400px}
+  .plans-group{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);padding:12px 10px 4px}
   .plans-all{display:flex;flex-direction:column;background:var(--cream);border-radius:10px;padding:14px;margin-bottom:8px}
   .plans-all-h{font-weight:800;color:var(--navy);margin-top:2px}
   .plan-row{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:10px;border-radius:8px}
