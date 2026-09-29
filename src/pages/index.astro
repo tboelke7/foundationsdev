@@ -49,7 +49,7 @@ const description = "International Guest Experience Audit for hotels, restaurant
   </section>
 
   <!-- HERO: the guest experience audit is the lead offer -->
-  <section id="audit" style="background:var(--navy);color:var(--cream);padding:64px 0 72px;border-top:3px solid var(--gold)">
+  <section id="audit" class="audit-lead" style="padding:64px 0 72px;border-top:3px solid var(--gold)">
     <div class="wrap hero">
       <div class="hero-copy">
         <p class="label" style="color:var(--gold)">International Guest Experience Audit · Sri Lanka</p>
@@ -228,6 +228,12 @@ const description = "International Guest Experience Audit for hotels, restaurant
     .bv-chip.c4{bottom:4%;right:12%}
     .trust-strip{display:flex;gap:14px 34px;flex-wrap:wrap;justify-content:center;padding-top:20px;padding-bottom:20px;border-top:1px solid rgba(212,168,85,.25)}
     .trust-strip span{font-family:var(--mono);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);opacity:.85}
+
+    .audit-lead{position:relative;background:var(--navy);color:var(--cream);overflow:hidden}
+    .audit-lead::before{content:"";position:absolute;inset:0;background:url('/images/audit-lead.webp') right center/cover no-repeat}
+    .audit-lead::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,var(--navy) 32%,rgba(13,27,42,.86) 58%,rgba(13,27,42,.3) 100%)}
+    .audit-lead .wrap{position:relative;z-index:1}
+    @media(max-width:899px){.audit-lead::after{background:rgba(13,27,42,.88)}}
 
     .hero{display:grid;gap:44px;align-items:center}
     @media(min-width:900px){.hero{grid-template-columns:1.2fr .8fr}}
