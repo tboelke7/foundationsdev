@@ -230,8 +230,8 @@ const description = "International Guest Experience Audit for hotels, restaurant
     .trust-strip span{font-family:var(--mono);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);opacity:.85}
 
     .audit-lead{position:relative;background:var(--navy);color:var(--cream);overflow:hidden}
-    .audit-lead::before{content:"";position:absolute;inset:0;background:url('/images/audit-lead.webp') right center/cover no-repeat}
-    .audit-lead::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,var(--navy) 32%,rgba(13,27,42,.86) 58%,rgba(13,27,42,.3) 100%)}
+    .audit-lead::before{content:"";position:absolute;inset:0;background:url('/images/audit-lead.webp') right center/contain no-repeat}
+    .audit-lead::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,var(--navy) 30%,rgba(13,27,42,.82) 52%,rgba(13,27,42,.2) 100%)}
     .audit-lead .wrap{position:relative;z-index:1}
     @media(max-width:899px){.audit-lead::after{background:rgba(13,27,42,.88)}}
 
