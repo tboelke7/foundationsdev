@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 const { title, description, path = "", extraSchema = [], leadName = "Web Presence Report Card" } = Astro.props;
 const canonical = site.url + path;
 const fullTitle = title ? `${title} | ${site.shortName}` : `${site.name} — ${site.tagline}`;
-const desc = description || "Owned, fast, conversion-built web presence for Tampa Bay trades and home-service contractors.";
+const desc = description || "Owned, fast, conversion-built websites and marketing systems for service and hospitality businesses, from Tampa Bay to Sri Lanka.";
 
 const schema = {
   "@context": "https://schema.org",
@@ -144,11 +144,11 @@ window.addEventListener('message', function(event) {
       <div class="foot-brand">
         <img src="/images/logo-header.webp" alt="Foundations" class="foot-logo" />
         <p class="foot-tag">{site.tagline}</p>
-        <p class="foot-blurb">International Guest Experience Audits for hospitality in Sri Lanka, plus owned, fast web presence for Tampa Bay trades. Human-verified, one project, one invoice.</p>
+        <p class="foot-blurb">International Guest Experience Audits for Sri Lankan hospitality, plus owned, fast websites and marketing systems for service businesses. Human-verified, one project, one invoice.</p>
         <div class="foot-badges">
           <span class="foot-badge">Human-verified</span>
           <span class="foot-badge">Sri Lanka hospitality</span>
-          <span class="foot-badge">Tampa Bay trades</span>
+          <span class="foot-badge">Websites &amp; marketing</span>
         </div>
       </div>
       <div class="foot-col">
