@@ -224,7 +224,7 @@ export const guestAudit = {
   },
   capabilities: [
     { title: "Bilingual Meaning Verification",
-      body: "Is the translation actually saying what you intend? We catch cases where the English is technically correct but the meaning is wrong. Our team includes native fluency in both English and Sri Lankan languages." },
+      body: "Is the translation actually saying what you intend? We catch cases where the English is technically correct but the meaning is wrong. Our verification is led by a native Sri Lankan speaker, a physician practicing in the United States." },
     { title: "Native-Level English QA",
       body: "Every guest-facing word is reviewed by a U.S.-certified English teacher, a Mississippi Teacher of the Year finalist, for clarity, tone, and brand fit. Not just grammar. We make sure it reads naturally to an international guest." },
     { title: "Human-Verified Accountability",
