@@ -280,17 +280,37 @@ const extraSchema = [
         <div class="ga-partner-terms">
           <p class="label" style="color:var(--gold)">Print Shop Partner Plan</p>
           <p class="ga-plan-price">$150<span class="ga-plan-per">/month · up to 50 item reviews</span></p>
-          <p style="opacity:.8;font-size:.9rem;margin-top:2px">About LKR 45,000. No contracts, cancel anytime.</p>
+          <p style="opacity:.8;font-size:.9rem;margin-top:2px">About LKR 45,000 monthly. Plus a one-time $150 onboarding. No contracts, cancel anytime.</p>
+          <p style="opacity:.8;font-size:.9rem;margin-top:8px">An item is one printed side, panel, or board, up to about 150 words. Multi-page pieces count per page. Re-checks of our own corrections are always free.</p>
           <ul class="ga-list ga-list-light" style="margin-top:16px">
             <li>Send artwork by WhatsApp, get it back same day on simple items</li>
             <li>Every item returned Approved or Changes Recommended, with corrected copy</li>
             <li>Charge it through as an "English check" line item, or bundle it free as your differentiator</li>
             <li>Costs less than one reprint a month, and ends the "whose mistake was it" argument forever</li>
             <li>Busy month? Add 20 more reviews for $50, whenever you need them</li>
+            <li>Onboarding covers your workflow setup, staff walkthrough, and "English Reviewed by Foundations" badge assets for your shop</li>
+            <li>Stay a year and the onboarding fee comes back to you: your 13th month is credited $150 as a thank you</li>
           </ul>
           <p style="margin-top:18px;opacity:.85;font-size:.95rem">The same plan works for sign makers, hotel suppliers, digital menu platforms, and design agencies.</p>
         </div>
       </div>
+      <div class="ga-earn">
+        <p class="label" style="color:var(--gold)">Make it a profit center</p>
+        <div class="ga-earn-row">
+          <div class="ga-earn-stat"><span class="ga-earn-n">LKR 1,500</span><span class="ga-earn-l">you charge per "English check"</span></div>
+          <span class="ga-earn-x" aria-hidden="true">×</span>
+          <div class="ga-earn-stat"><span class="ga-earn-n">50 items</span><span class="ga-earn-l">a month through your shop</span></div>
+          <span class="ga-earn-x" aria-hidden="true">=</span>
+          <div class="ga-earn-stat"><span class="ga-earn-n">LKR 75,000</span><span class="ga-earn-l">collected, against about LKR 45,000 for the plan</span></div>
+          <span class="ga-earn-x" aria-hidden="true">→</span>
+          <div class="ga-earn-stat ga-earn-hi"><span class="ga-earn-n">~LKR 30,000</span><span class="ga-earn-l">new profit, every month</span></div>
+        </div>
+        <p style="margin-top:14px;opacity:.85;font-size:.95rem">
+          Charge LKR 2,000 and it's closer to LKR 55,000 a month, before counting the jobs you win for
+          being the shop whose English is guaranteed. Or bundle it free and make it the reason customers pick you.
+        </p>
+      </div>
+
       <p class="ga-partner-close">Every correction is human-verified. Your client's reputation is on the line. So is ours.</p>
       <a class="btn" style="margin-top:22px" href={partnerHref} data-service={f.partnerValue}>Become a Partner</a>
     </div>
@@ -501,6 +521,15 @@ const extraSchema = [
     .ga-partner-terms{padding:24px;border-radius:14px;border:2px solid var(--gold);background:rgba(255,255,255,.04)}
     .ga-plan-price{font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;margin-top:10px;color:var(--gold)}
     .ga-plan-per{font-size:.95rem;font-weight:500;color:var(--cream);opacity:.85;margin-left:6px}
+    .ga-earn{margin-top:36px;padding:26px 28px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(212,168,85,.3)}
+    .ga-earn-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:16px}
+    .ga-earn-stat{display:flex;flex-direction:column;min-width:140px}
+    .ga-earn-n{font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--cream)}
+    .ga-earn-hi .ga-earn-n{color:var(--gold)}
+    .ga-earn-l{font-size:.82rem;opacity:.75;margin-top:4px;max-width:20ch}
+    .ga-earn-x{font-size:1.4rem;color:var(--gold);opacity:.7}
+    @media(max-width:700px){.ga-earn-x{display:none}.ga-earn-stat{min-width:45%}}
+
     .ga-partner-close{margin-top:36px;font-family:var(--display);font-weight:800;font-size:1.2rem;color:var(--gold)}
 
     .ga-faq{margin-top:28px;border-top:1px solid var(--line)}

@@ -286,6 +286,8 @@ export const guestAudit = {
       a: "Absolutely. Many properties start with a Quick Review and expand to a full audit later. No lock-in." },
     { q: "What if we update menus and signage often?",
       a: "That's what Annual Assurance is for. Send us new content and it comes back reviewed within 2 to 3 business days." },
+    { q: "What counts as one item on the Partner Plan?",
+      a: "One item is one printed side, panel, or board of up to about 150 words: a banner, a sign, a poster, a flyer side, a label, or a single menu board. Larger pieces count by the page or panel, so a six-page menu is six items. Re-checking artwork after you apply our corrections is always free and never uses an item. Full websites, booking systems, and complete property materials are not Partner Plan items; those are quoted as a Guest Experience Audit." },
     { q: "Do you work outside Sri Lanka?",
       a: "We currently specialize in Sri Lankan hospitality because of our deep cultural and bilingual foundation there." },
   ],
