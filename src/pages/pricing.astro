@@ -52,6 +52,14 @@ const auditHref = guestAuditHref(ga.form.auditValue);
         Pricing depends on property size, touchpoints, and content complexity.
         <a href={ga.path} style="color:var(--brass);font-weight:700">Full service details →</a>
       </p>
+      <div class="partner-strip">
+        <div>
+          <p class="label">For print shops, sign makers &amp; suppliers</p>
+          <p style="margin-top:8px;font-weight:700;color:var(--navy);font-size:1.15rem">Partner Plan — $150/month, up to 50 item reviews</p>
+          <p style="margin-top:6px;color:var(--muted);font-size:.95rem">English review on every job you print, by WhatsApp, same day on simple items. Costs less than one reprint a month. Busy month? Add 20 more reviews for $50.</p>
+        </div>
+        <a class="btn btn-ghost" href={`${ga.path}#partners`}>Partner details →</a>
+      </div>
     </div>
   </section>
 
@@ -160,6 +168,7 @@ const auditHref = guestAuditHref(ga.form.auditValue);
   </section>
 
   <style>
+    .partner-strip{margin-top:28px;padding:24px 28px;border-radius:14px;background:#fff;border:1px solid var(--line);display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
     .jump{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
     .jump a{font-family:var(--mono);font-size:.84rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,168,85,.5);border-radius:24px;padding:10px 18px}
     .jump a:hover{background:var(--gold);color:var(--navy)}

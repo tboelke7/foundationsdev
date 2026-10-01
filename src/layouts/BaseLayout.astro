@@ -172,6 +172,7 @@ window.addEventListener('message', function(event) {
       <div class="foot-col">
         <p class="foot-h">Get in touch</p>
         <a href={`tel:${site.phoneRaw}`}>{site.phone}</a>
+        <a href={site.whatsappHref} target="_blank" rel="noopener">WhatsApp: {site.phone}</a>
         <a href={`mailto:${site.email}`}>{site.email}</a>
         <p class="foot-areas">{site.serviceAreas.join(" · ")}</p>
         <a class="btn navcta" style="margin-top:14px" href={guestAuditHref(guestAudit.form.auditValue)}>Request an Audit →</a>

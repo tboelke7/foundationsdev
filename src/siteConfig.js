@@ -10,6 +10,8 @@ export const site = {
   email: "troy@bdfoundations.com",
   phone: "(813) 402-8393",
   phoneRaw: "8134028393",
+  whatsapp: "18134028393", // E.164, no plus — used in wa.me links
+  whatsappHref: "https://wa.me/18134028393?text=" + encodeURIComponent("Hi Foundations, I'd like to ask about a Guest Experience Audit."),
   region: "Tampa Bay",
   city: "Brandon",
   state: "FL",
@@ -224,7 +226,7 @@ export const guestAudit = {
     { title: "Bilingual Meaning Verification",
       body: "Is the translation actually saying what you intend? We catch cases where the English is technically correct but the meaning is wrong. Our team includes native fluency in both English and Sri Lankan languages." },
     { title: "Native-Level English QA",
-      body: "Every guest-facing word is reviewed for clarity, tone, and brand fit. Not just grammar. We make sure it reads naturally to an international guest." },
+      body: "Every guest-facing word is reviewed by a U.S.-certified English teacher, a Mississippi Teacher of the Year finalist, for clarity, tone, and brand fit. Not just grammar. We make sure it reads naturally to an international guest." },
     { title: "Human-Verified Accountability",
       body: "We take responsibility for the final output. Every correction is verified by a human expert before you receive it. That checkpoint is what makes this different from AI-only solutions." },
   ],
