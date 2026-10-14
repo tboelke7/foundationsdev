@@ -74,15 +74,30 @@ src="https://www.facebook.com/tr?id=36583469651298854&ev=PageView&noscript=1"
   gtag('config', 'G-RZS3FHXKG7');
 </script>
 <!-- End Google tag -->
-<!-- HubSpot form submit → Meta Lead event -->
+<!-- HubSpot form submit → Meta Lead + GA4 generate_lead. The form is an iframe, so GA4 can't see it on its own. -->
 <script is:inline define:vars={{ leadName }}>
 window.addEventListener('message', function(event) {
-  if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormSubmitted') {
+  var d = event.data;
+  if (d && d.type === 'hsFormCallback' && d.eventName === 'onFormSubmitted') {
+    var name = window.fdnLeadName || leadName;
     if (window.fbq) {
-      fbq('track', 'Lead', {
-        content_name: window.fdnLeadName || leadName
-      });
+      fbq('track', 'Lead', { content_name: name });
     }
+    if (window.gtag) {
+      gtag('event', 'generate_lead', { lead_type: name, page_path: location.pathname });
+    }
+  }
+});
+// Clicks on any "Request an Audit" / "Become a Partner" link (they all carry ?service_interest=).
+document.addEventListener('click', function(e) {
+  var a = e.target.closest && e.target.closest('a[href*="service_interest="]');
+  if (a && window.gtag) {
+    var m = a.getAttribute('href').match(/service_interest=([^&#]+)/);
+    gtag('event', 'audit_cta_click', {
+      lead_type: m ? decodeURIComponent(m[1]) : '',
+      link_text: (a.textContent || '').trim().slice(0, 60),
+      page_path: location.pathname
+    });
   }
 });
 </script>
